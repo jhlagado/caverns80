@@ -1,6 +1,6 @@
 # Caverns80: The 1982 Fantasy Adventure (Z80 Port)
 
-Z80 assembly port of the 1983 MicroWorld BASIC program in `docs/basic/mwb.txt`
+Z80 assembly port of the 1983 MicroWorld BASIC program in `docs/basic/caverns.mwb`
 and related references.
 
 ## A Microbee Classic
@@ -13,6 +13,14 @@ the Microbee where it reached its most complete form.
 The program is classic 1980s BASIC: sprawling, direct, and ambitious for its
 era. It remains one of the most detailed early Australian text adventures for
 the Microbee.
+
+## Recovery Note
+
+The source listing was lost for decades and survived only in hobbyist
+collections. It was preserved through the Microbee Software Preservation
+Project, with Alan Laughton (aka ChickenMan) providing guidance and access to
+the original files. The recovered listing is released here under the GNU Public
+License, reflecting the 2019 release note embedded in the BASIC program.
 
 ## The Premise (From the Intro)
 
@@ -35,10 +43,22 @@ bringing treasure back to the hut to raise your score.
 ## What You Will Find Here (Minimal)
 
 - `src/` — the Z80 assembly source, including macros, tables, and game logic.
-- `docs/basic/mwb.txt` — the original MicroWorld BASIC listing used as the
+- `docs/basic/caverns.mwb` — the original MicroWorld BASIC listing used as the
   primary reference.
 - `.vscode/` — Debug80 configuration for VS Code (optional; can be regenerated).
 - `build/` — build artifacts (ignored by git).
+
+## Build (asm80)
+
+This project assembles with asm80 and does not depend on Debug80 for building.
+
+```bash
+npm i -g asm80
+mkdir -p build
+asm80 -m Z80 -t hex -o build/main src/main.asm
+```
+
+That produces `build/main.hex` and `build/main.lst`.
 
 ## Goal
 
