@@ -2254,8 +2254,4 @@ rl_loop:
         DJNZ    rl_loop
 rl_done:
         LD      (HL),0
-        CP      0x0A
-        JR      NZ,rl_ret
-        CALL    printNewLine
-rl_ret:
         RET
