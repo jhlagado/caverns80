@@ -482,12 +482,9 @@ printWordTableEntry0Based:
 ; handleInputLine
 ; Interprets a minimal command set:
 ; - N/S/E/W (single-letter) attempts to move.
-; Otherwise echoes the line as before.
+; Otherwise handles the line as before.
 ; ---------------------------------------------------------
 handleInputLine:
-        LD      HL,BUF                  ; echo user's input
-        SYS_PUTS
-        CALL    printNewLine
         CALL    printNewLine
 
         ; Count moves (one per input line).
@@ -2238,8 +2235,8 @@ toUpperA:
         RET
 
 ; readLn: HL buffer, B = buffer length (including terminator)
-; Reads until newline (0x0A) or buffer full-1, echoes as it reads,
-; zero-terminates. Returns with A holding last read (newline).
+; Reads until newline (0x0A) or buffer full-1. Input echo is handled
+; by the host terminal. Returns with A holding last read (newline).
 readLn:
         DEC     B               ; reserve space for terminator
         LD      A,B
@@ -2257,4 +2254,8 @@ rl_loop:
         DJNZ    rl_loop
 rl_done:
         LD      (HL),0
+        CP      0x0A
+        JR      NZ,rl_ret
+        CALL    printNewLine
+rl_ret:
         RET
