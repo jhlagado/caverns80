@@ -209,3 +209,9 @@ Earlier inventory and measurement sections remain historical snapshots.
 The current normal suite contains 58 tests after adding the CPU regression gate;
 the published v0.1.1 source release was qualified with 57 tests. This later test
 and reporting work does not alter the executable.
+
+| Final file | Purpose and disposition |
+| --- | --- |
+| `tools/prove-browser.mjs` | Keep. Repeatable exact-asset, full-game, persistence and optional old-disk upgrade proof using isolated browser contexts. |
+| `docs/reports/browser-verification.md` | Keep with spoiler warning. Documents the maintained browser proof and its required fixtures. |
+| `docs/reports/delivery-acceptance.md` | Keep with spoiler warning. Maps each original milestone to authoritative evidence and the outstanding final hosted gate. |
