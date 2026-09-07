@@ -43,6 +43,10 @@ RNGSTATE: DW $ACE1
 SVBUF: DS 128,0
 SVBUFEND:
 INPOVER: DB 0
+; Presentation-only pagination state; never saved as gameplay.
+PGON: DB 0
+PGROWS: DB 0
+PGSKIP: DB 0
 WOREND:
 STABOT: DS 512,0
 STACKTOP:

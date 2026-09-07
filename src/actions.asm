@@ -10,11 +10,13 @@ CMDSCORE:
         RET
 
 CMDHELP:
+        CALL PGBEGIN
         LD      HL,STORYTXT
         CALL    TERPUT1
         LD      HL,STRHELTE
         CALL    PRILIN
         CALL    PRINEWLI
+        CALL PAGEEND
         RET
 
 CMDQUIT:

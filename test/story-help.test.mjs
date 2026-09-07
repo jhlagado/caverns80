@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
 import {createMachine} from './support/machine.mjs';
-const flat=s=>s.replace(/\s+/g,' ').trim();
+const visible=s=>s.replace(/\[Space\/Enter: more, Q: skip\] \r +\r/g,'');
+const flat=s=>visible(s).replace(/\s+/g,' ').trim();
 const episodes=[
  'Deep in the icy mountains of northern Iotunheim',
  'The Great Sons of Svartalfheim.',
@@ -31,7 +32,7 @@ test('startup includes the whole original story, current rules and author herita
  for(const rule of ['INVENTORY, INVENT, I and LIST','SAVE CAMP and LOAD CAMP','CAVERNS.SAV','HELP repeats this story','KILL DRAGON WITH SWORD'])assert(text.includes(rule),rule);
  assert.doesNotMatch(text,/Use sword|use candle|PLEASE PRESS PLAY/i);
  assert.match(g.output,/\? $/,'no introduction input gate');
- for(const line of g.output.split('\r\n'))assert(line.length<=78,`startup width ${line.length}`);
+ for(const line of visible(g.output).split('\r\n'))assert(line.length<=78,`startup width ${line.length}`);
 });
 
 test('HELP repeats identical narrative and rules without changing progress or stack',async()=>{

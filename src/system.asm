@@ -42,6 +42,10 @@ TCSEND:
         POP DE
         POP BC
         POP AF
+        PUSH AF
+        CP 10
+        CALL Z,PGLINE
+        POP AF
         RET
 TERGET:
         PUSH BC
@@ -70,6 +74,9 @@ TERPUT1:
         PUSH DE
         PUSH HL
 PUTLOO:
+        LD A,(PGSKIP)
+        OR A
+        JP NZ,PUTDON
         LD A,(HL)
         OR A
         JP Z,PUTDON
@@ -98,6 +105,9 @@ PUTFIT:
 PUTBREAK:
         CALL TERNEW
 PUTWORD:
+        LD A,(PGSKIP)
+        OR A
+        JR NZ,PUTDON
         LD A,(HL)
         CP 33
         JR C,PUTLOO
@@ -106,6 +116,9 @@ PUTWORD:
         JR C,PUTCHAR
         CALL TERNEW
 PUTCHAR:
+        LD A,(PGSKIP)
+        OR A
+        JR NZ,PUTDON
         LD A,(HL)
         CALL TERPUT
         INC HL

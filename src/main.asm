@@ -6,6 +6,7 @@
 %INCLUDE "numbers.asm"
 %INCLUDE "savecode.asm"
 %INCLUDE "savedisk.asm"
+%INCLUDE "pager.asm"
 %INCLUDE "system.asm"
 %INCLUDE "strings.asm"
 %INCLUDE "examtext.asm"

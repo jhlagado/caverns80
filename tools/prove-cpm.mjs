@@ -20,7 +20,7 @@ for(const name of ['triptych_host_wasm.js','triptych_host_wasm_bg.wasm'])hostArt
 const {TriptychCpu}=createRequire(import.meta.url)(root+'/dist/wasm/triptych_host_wasm.js');
 const cpu=new TriptychCpu(built.bootstrap);cpu.install_drive(0,disk,true);
 let output='';
-function until(suffix){for(let i=0;i<2000;i++){cpu.run_slice(50000,500000);output+=Buffer.from(cpu.take_serial_output()).toString('latin1');if(output.endsWith(suffix))return;}throw Error('Timeout '+output.slice(-500));}
+function until(suffix){for(let i=0;i<2000;i++){cpu.run_slice(50000,500000);output+=Buffer.from(cpu.take_serial_output()).toString('latin1');if(output.endsWith(suffix))return;if(output.endsWith('[Space/Enter: more, Q: skip] '))cpu.enqueue_serial_input(Uint8Array.of(32));}throw Error('Timeout '+output.slice(-500));}
 function command(text,suffix='? '){output='';cpu.enqueue_serial_input(Buffer.from(text+'\r'));until(suffix);return output;}
 const reference=await createMachine();
 const proof=proveFullRoute(reference);

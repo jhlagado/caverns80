@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {createZ80Runtime} from '@jhlagado/debug80-runtime/z80/runtime';
 
-export async function createMachine({files:initialFiles={},diskFault,readOnlyFiles=[],readOnlyDrive=false}={}){
+export async function createMachine({files:initialFiles={},diskFault,readOnlyFiles=[],readOnlyDrive=false,autoPage=true}={}){
  const binary=await readFile(new URL('../../build/CAVERNS.COM',import.meta.url));
  const symbols=JSON.parse(await readFile(new URL('../../build/symbols.json',import.meta.url),'utf8'));
  const initial=new Uint8Array(65536); initial.set(binary,256);
@@ -25,7 +25,7 @@ export async function createMachine({files:initialFiles={},diskFault,readOnlyFil
     if(fn===0){exited=true;return {...before,exited};}
     if(fn===1){if(!input.length)return {...before,waiting:true};const ch=input.shift();output+=String.fromCharCode(ch);ret(ch);}
     else if(fn===2){output+=String.fromCharCode(cpu.e);ret(cpu.e);}
-    else if(fn===6){if(cpu.e===255){if(!input.length)return {...before,waiting:true};ret(input.shift());}else{output+=String.fromCharCode(cpu.e);ret(cpu.e);}}
+    else if(fn===6){if(cpu.e===255){if(!input.length){if(autoPage&&output.endsWith('[Space/Enter: more, Q: skip] ')){ret(32);continue;}return {...before,waiting:true};}ret(input.shift());}else{output+=String.fromCharCode(cpu.e);ret(cpu.e);}}
     else if(fn===9){let p=address;while(memory[p]!==36){assert(p<65535,'unterminated BDOS string');output+=String.fromCharCode(memory[p++]);}ret(0);}
     else if(fn===10){const eol=input.indexOf(13);if(eol<0)return {...before,waiting:true};const line=input.splice(0,eol+1).slice(0,-1);assert(line.length<=memory[address],'adapter line capacity');memory[address+1]=line.length;memory.set(line,address+2);output+=String.fromCharCode(...line)+'\r\n';ret(0);}
     else if([15,16,19,20,21,22,23,25,26,29].includes(fn)){

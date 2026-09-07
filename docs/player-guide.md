@@ -124,3 +124,9 @@ score and prompts for another adventure: answer `N` to return to CP/M.
 Ctrl-C returns immediately to CP/M. Save first if you want to continue later.
 
 The sun is rising. It is time you were on your way… Good luck!
+
+## Reading the introduction
+
+The story and HELP pause before filling a 25-row terminal. Press Space or Enter
+to continue, or Q to skip the remaining text and return to the game. HELP starts
+the story again whenever you want to reread it. Reading pages does not use turns.
