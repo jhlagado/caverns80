@@ -1,7 +1,13 @@
 # Caverns80: The 1982 Fantasy Adventure (Z80 Port)
 
+Copyright 1982–83 John Hardy. Development began in 1982 for the Sinclair ZX81;
+the Microbee version was released in 1983.
+
 Z80 assembly port of the 1983 MicroWorld BASIC program in `docs/basic/caverns.mwb`
 and related references.
+
+[Read the spoiler-free player guide](docs/player-guide.md) for the story, commands,
+and disk-save instructions.
 
 ## A Microbee Classic
 
@@ -40,28 +46,40 @@ wizards, a fire-breathing dragon, a giant bat colony, and a temple devoted to
 Loki. Progress depends on careful exploration, inventory management, and
 bringing treasure back to the hut to raise your score.
 
-## What You Will Find Here (Minimal)
+## Build and test
 
-- `src/` — the Z80 assembly source, including macros, tables, and game logic.
-- `docs/basic/caverns.mwb` — the original MicroWorld BASIC listing used as the
-  primary reference.
-- `.vscode/` — Debug80 configuration for VS Code (optional; can be regenerated).
-- `build/` — build artifacts (ignored by git).
+Run `npm ci`, then `npm run check`. The build uses pinned native ATOM and creates
+`build/CAVERNS.COM`, a manifest and development debug information. No source
+translation or legacy assembler is required. All ASM filenames fit CP/M 8.3;
+each module has at most 500 lines.
 
-## Build (asm80)
+`src/` contains assembly input. `tools/` contains host build and verification
+utilities, including the descriptive test-symbol map. `test/` runs the assembled
+game. Generated files in `build/` and dependencies in `node_modules/` are ignored.
+The recovered BASIC remains in `docs/basic/` as historical reference.
 
-This project assembles with asm80 and does not depend on Debug80 for building.
-
-```bash
-npm i -g asm80
-mkdir -p build
-asm80 -m Z80 -t hex -o build/main src/main.asm
-```
-
-That produces `build/main.hex` and `build/main.lst`.
+Run `npm run measure` after building for per-command cycle samples. With a built
+Triptych checkout, run `TRIPTYCH_ROOT=/path/to/triptych node tools/prove-cpm.mjs`
+for the complete CP/M WASM-host route on a private disk.
 
 ## Goal
 
-Translate the original Caverns BASIC program into structured Z80 assembly while
-preserving gameplay behavior and documenting differences or discoveries when
-needed.
+Complete the revised Caverns80 adventure for CP/M and deliver it in Triptych's
+WebAssembly browser system. John Hardy's intentional Caverns80 gameplay changes
+are canonical; the recovered BASIC is a reference for unfinished content.
+The current implementation completes a 126-point adventure in automated native
+and WASM CP/M checks. Release integration and published-browser qualification
+are tracked separately in the implementation report.
+
+**Spoiler warning:** The source, automated full-game routes, and development
+documents below reveal locations, puzzle solutions, and ways to complete the
+adventure. They are retained for development and historical reference; players
+who want to discover the game should avoid them until after playing.
+
+The September 2026 documentation package contains:
+
+- [Current implementation and gameplay baseline](docs/reports/cpm-baseline.md)
+- [Proposed CP/M architecture](docs/design/cpm-game.md)
+- [Delivery milestones and browser acceptance](docs/plans/cpm-roadmap.md)
+
+- [Assembly module guide (spoilers)](docs/design/source-modules.md)

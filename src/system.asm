@@ -1,104 +1,167 @@
-; System layer: RST 10H services and terminal helpers.
-; ROM region 0x0000–0x07FF, jumps to APPSTART after init.
-
-        .include "constants.asm"
-
-        .org ROMSTART
-        JP      RESET
-
-        ; Unused RST $08 slot
-        .org ROMSTART+$08
+; CP/M console ABI. All output preserves main registers and flags.
+; Input returns A (flags undefined), preserving BC DE HL IX IY.
+TERPUT:
+        PUSH AF
+        PUSH BC
+        PUSH DE
+        PUSH HL
+        PUSH IX
+        PUSH IY
+        LD E,A
+        ; Track logical column for raw echo and composed string calls.
+        CP 13
+        JR Z,TCRESET
+        CP 10
+        JR Z,TCRESET
+        CP 8
+        JR Z,TCBACK
+        CP 32
+        JR C,TCSEND
+        LD A,(TERCOL)
+        CP 255
+        JR Z,TCSEND
+        INC A
+        LD (TERCOL),A
+        JR TCSEND
+TCBACK:
+        LD A,(TERCOL)
+        OR A
+        JR Z,TCSEND
+        DEC A
+        LD (TERCOL),A
+        JR TCSEND
+TCRESET:
+        XOR A
+        LD (TERCOL),A
+TCSEND:
+        LD C,6
+        CALL 5
+        POP IY
+        POP IX
+        POP HL
+        POP DE
+        POP BC
+        POP AF
         RET
-
-        ; RST $10 dispatches to a trampoline to leave vectors free
-        .org ROMSTART+$10
-        JP      SERVICE
-
-; RST 38H handler (IM 1) for Ctrl-C
-        .org $0038
-RST38H:
-        DI
-        PUSH    AF
-        PUSH    BC
-        PUSH    DE
-        PUSH    HL
-        PUSH    IX
-        PUSH    IY
-
-        LD      HL,msg_ctrlc
-        CALL    term_puts
-
-        POP     IY
-        POP     IX
-        POP     HL
-        POP     DE
-        POP     BC
-        POP     AF
-        EI
-        RETI
-
-; -------------------------------------------------------------------
-; Reset/init: set stack, jump to app at APPSTART.
-; -------------------------------------------------------------------
-
-        .org $0100
-RESET:
-        LD      SP,STACK_TOP
-        IM      1
-        EI
-        JP      APPSTART
-
-SERVICE:
-        EX      AF,AF'          ; save callers AF
-        LD      A,C             ; selector in A for compare
-        CP      SVC_PUTCHAR
-        JR      Z,svc_putc
-        CP      SVC_GETCHAR
-        JR      Z,svc_getc
-        CP      SVC_PUTSTR
-        JR      Z,svc_puts
-        EX      AF,AF'          ; restore on unknown
-        RET                     ; unknown service: no-op
-
-svc_putc:
-        EX      AF,AF'          ; restore original A
-; A -> transmit
-term_putc:
-        OUT     (TERM_TX_PORT),A
+TERGET:
+        PUSH BC
+        PUSH DE
+        PUSH HL
+        PUSH IX
+        PUSH IY
+GETWAI:
+        LD E,$FF
+        LD C,6
+        CALL 5
+        OR A
+        JR Z,GETWAI
+        POP IY
+        POP IX
+        POP HL
+        POP DE
+        POP BC
         RET
-
-svc_getc:
-        EX      AF,AF'          ; restore original A
-; Blocking getc: waits until RX available, returns char in A
-term_getc:
-        IN      A,(TERM_STATUS)
-        AND     1
-        JR      Z,term_getc
-        IN      A,(TERM_RX_PORT)
+ ; HL points to a null-terminated string. All main registers/flags preserved.
+; Wrap words at78columns. Lookahead stops after79bytes; a long word makes
+; bounded forward progress in78column chunks. State spans composed calls.
+TERPUT1:
+        PUSH AF
+        PUSH BC
+        PUSH DE
+        PUSH HL
+PUTLOO:
+        LD A,(HL)
+        OR A
+        JP Z,PUTDON
+        CP 33
+        JR C,PUTSPACE
+        LD D,H
+        LD E,L
+        LD C,0
+PUTSCAN:
+        LD A,(DE)
+        CP 33
+        JR C,PUTFIT
+        INC DE
+        INC C
+        LD A,C
+        CP 79
+        JR C,PUTSCAN
+PUTFIT:
+        LD A,(TERCOL)
+        OR A
+        JR Z,PUTWORD
+        ADD A,C
+        JR C,PUTBREAK
+        CP 79
+        JR C,PUTWORD
+PUTBREAK:
+        CALL TERNEW
+PUTWORD:
+        LD A,(HL)
+        CP 33
+        JR C,PUTLOO
+        LD A,(TERCOL)
+        CP 78
+        JR C,PUTCHAR
+        CALL TERNEW
+PUTCHAR:
+        LD A,(HL)
+        CALL TERPUT
+        INC HL
+        JR PUTWORD
+PUTSPACE:
+        CP 32
+        JR NZ,PUTCTRL
+        LD A,(TERCOL)
+        CP 78
+        JR C,PUTCTRL
+        CALL TERNEW
+        INC HL
+        JR PUTLOO
+PUTCTRL:
+        LD A,(HL)
+        CALL TERPUT
+        INC HL
+        JR PUTLOO
+PUTDON:
+        POP HL
+        POP DE
+        POP BC
+        POP AF
         RET
-
-svc_puts:
-        EX      AF,AF'          ; restore original A
-; HL -> zero-terminated string, prints until 0
-term_puts:
-        LD      A,(HL)
-        OR      A
-        RET     Z
-        CALL    term_putc
-        INC     HL
-        JR      term_puts
-
-svc_clr:
-        EX      AF,AF'          ; restore original A
-        PUSH    HL
-        LD      HL,clear_seq
-        CALL    term_puts
-        POP     HL
+TERNEW:
+        PUSH AF
+        LD A,13
+        CALL TERPUT
+        LD A,10
+        CALL TERPUT
+        POP AF
         RET
-
-; ANSI clear + home
-clear_seq:
-        .db     ESC,"[2J",ESC,"[H",0
-
-msg_ctrlc:
-        .db     "Ctrl-C pressed",0x0A,0
+; Terminal path: BDOS warm boot returns to CP/M, never an old command.
+CPMEXIT:
+        LD SP,STACKTOP
+        LD C,0
+        CALL 5
+        JP 0
+; Deterministic 16-bit LFSR. A result; flags clobbered; other registers preserved.
+RNG:
+        PUSH HL
+        LD HL,(RNGSTATE)
+        SRL H
+        RR L
+        JR NC,RNGDONE
+        LD A,H
+        XOR $B4
+        LD H,A
+RNGDONE:
+        LD (RNGSTATE),HL
+        LD A,L
+        POP HL
+        RET
+; One byte of presentation workspace (count separately from executable code).
+TERCOL: DB 0
+CODEEND:
+IMMSTA:
+DONE_MSG: DB "Done.",13,10,0
+CLESEQ: DB 0
