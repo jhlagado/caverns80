@@ -1,6 +1,6 @@
 ; ---------------------------------------------------------
 ; cmdRead / cmdPray
-; In the crypt, give the Galar inscription clue.
+; Contextual inscriptions: crypt, castle and dead-end key clue.
 ; ---------------------------------------------------------
 CMDREAD:
         JR      CMDPRACO
@@ -13,6 +13,8 @@ CMDPRACO:
         JR      Z,CPPINCRY
         CP ROOCASCO
         JR Z,READCAST
+        CP ROODEAEN
+        JR Z,READDEAD
         LD      HL,STRNOTHA
         CALL    PRILIN
         CALL    PRINEWLI
@@ -22,6 +24,11 @@ CPPINCRY:
         LD      HL,VARDCLUE
         CALL    PRILIN
         CALL    PRINEWLI
+        RET
+
+READDEAD:
+        LD HL,DESDEAEN
+        CALL PRILIN
         RET
 
 READCAST:

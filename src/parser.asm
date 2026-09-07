@@ -225,7 +225,7 @@ DISSCACO:
         CP      9
         JP      Z,CMDLIST
         CP      10
-        JP      Z,PROPLAAG
+        JP      Z,VOLPROM
         CP      11
         JP      Z,CMDHELP
         CP      12

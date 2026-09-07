@@ -36,7 +36,7 @@ CMDQUIT:
         CALL    PRILIN
         CALL    PRINEWLI
 
-        CALL    PROPLAAG
+        CALL    VOLPROM
         RET
 
 ; unreachable (promptPlayAgain handles restart/exit)
@@ -73,8 +73,17 @@ CA_DO:
 ; promptPlayAgain
 ; Asks "Another adventure?" and restarts on yes/ok.
 ; ---------------------------------------------------------
+; Fatal entry: cancellation disabled. Voluntary entry: RET may resume caller.
+; The permission byte lives on this activation's stack, never in game state.
 PROPLAAG:
-        LD      HL,STRANO
+        XOR A
+        LD HL,STRANO
+        JR PPASHARE
+VOLPROM:
+        LD A,1
+        LD HL,VOLTEXT
+PPASHARE:
+        PUSH AF
         CALL TERPUT1
 
 PPA_READ:
@@ -103,14 +112,47 @@ PPACHE:
         JR      Z,PPA_EXIT
         CP      'N'
         JR      Z,PPA_EXIT
+        CP 'c'
+        JR Z,PPACAN
+        CP 'C'
+        JR Z,PPACAN
+PPA_BAD:
         LD      HL,STREH
         CALL    PRILIN
         JR      PPA_READ
 
+PPACAN:
+        INC HL
+        LD A,(HL)
+        OR A
+        JR Z,PPACHECK
+        LD DE,CANTAIL
+PPACWORD:
+        LD A,(HL)
+        CALL TOUPPERA
+        LD B,A
+        LD A,(DE)
+        CP B
+        JR NZ,PPA_BAD
+        OR A
+        JR Z,PPACHECK
+        INC HL
+        INC DE
+        JR PPACWORD
+PPACHECK:
+        POP AF
+        PUSH AF
+        OR A
+        JR Z,PPA_BAD
+        POP AF
+        RET
+
 PPARES:
+        POP AF
         JP START                ; reset SP before reinitializing gameplay
 
 PPA_EXIT:
+        POP AF
         JP CPMEXIT
 
 ; ---------------------------------------------------------

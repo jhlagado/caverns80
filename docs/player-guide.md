@@ -120,7 +120,9 @@ with a fresh disk does not include saves from an older one. Wait for a save to
 finish before leaving the game or exporting the disk.
 
 `RESTART` begins another adventure after confirmation. `QUIT` displays your
-score and prompts for another adventure: answer `N` to return to CP/M.
+score and prompts for another adventure: answer `N` to return to CP/M,
+`Y` to start fresh, or `C`/`CANCEL` to resume the current game. Cancellation
+is available for voluntary QUIT/RESTART, not after death.
 Ctrl-C returns immediately to CP/M. Save first if you want to continue later.
 
 The sun is rising. It is time you were on your way… Good luck!

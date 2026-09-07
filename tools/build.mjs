@@ -36,6 +36,6 @@ for(const name of (await readdir(root,{withFileTypes:true})).filter(entry=>entry
  sourceFiles['src/'+name]=createHash('sha256').update(content).digest('hex');
 }
 const sourceSha256=createHash('sha256').update(JSON.stringify(sourceFiles)).digest('hex');
-const manifest={format:'caverns-build-v1',artifact:'CAVERNS.COM',version:'0.1.0',loadAddress:256,entryAddress:256,bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex'),assembler:{name:'atom-z80',revision:'802b5c2d320bec777f427755ff2d7338e3b80a05'},sourceFormat:'native-atom',memory,sourceSha256,sourceFiles};
+const manifest={format:'caverns-build-v1',artifact:'CAVERNS.COM',version:'0.1.1',loadAddress:256,entryAddress:256,bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex'),assembler:{name:'atom-z80',revision:'802b5c2d320bec777f427755ff2d7338e3b80a05'},sourceFormat:'native-atom',memory,sourceSha256,sourceFiles};
 await writeFile(new URL('manifest.json',out),JSON.stringify(manifest,null,2)+'\n');
 console.log(JSON.stringify(manifest,null,2));
