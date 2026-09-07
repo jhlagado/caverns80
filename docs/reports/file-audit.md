@@ -156,10 +156,29 @@ awaiting removal. The dated BASIC baseline report remains unchanged.
 | `src/pager.asm` | Keep. Paged story and HELP output. Native ATOM source with an 8.3 filename. |
 | `test/pager.test.mjs` | Keep. Pager continuation, completion and state/stack tests. |
 | `tools/prove-cpm.mjs` | Keep. Real native/WASM CP/M full-route and save proof through an explicitly selected Triptych checkout. |
-| `tools/prove-save-failures.mjs` | Keep. Private real WASM CP/M data-full and directory-full fixtures; both pass for the current COM. Include this new tool in the next reviewed commit. |
+| `tools/prove-save-failures.mjs` | Keep. Private real WASM CP/M data-full and directory-full fixtures; both pass for the current COM. The tool is committed with the release qualification reports. |
 
 Generated `build/symbols.json` now derives from `tools/symbol-map.json`.
 The current COM is 22,726 bytes with SHA-256
 `662445028d6c55d58f5497032853803d181e128082ed1f1264db1e010cd162e3`.
-`build/command-costs.json` still identifies an earlier binary; regenerate it for
-current CPU measurements rather than relabelling historical samples.
+Current CPU samples for that hash are retained in
+`docs/reports/evidence/command-costs.json`; historical samples remain identified
+by their own executable hashes.
+
+## Qualification and coverage additions
+
+These files extend the inventory without entering the CP/M executable:
+
+| File | Purpose and disposition |
+| --- | --- |
+| `docs/reports/cpm-stack.md` | Keep. CP/M entry, private allocation, BDOS termination and measured stack evidence. |
+| `docs/reports/room-matrix.md` | Keep with spoiler notice. All 54 ordinary-command room visits and explicit clue limitations. |
+| `test/world-tour.test.mjs` | Keep. Fresh victory followed by physical exploration of every room, including bat displacement. |
+| `docs/reports/evidence/command-costs.json` | Keep. Reproducible per-command CPU samples tied to the release hash. |
+| `docs/reports/evidence/cpm-proof.json` | Keep. Real WASM CP/M full-route proof with executable and host identities. |
+| `docs/reports/evidence/save-failure-proof.json` | Keep. Real CP/M data-full and directory-full save failures using private media. |
+| `docs/reports/evidence/browser-local.json` | Keep. Local browser route and timing samples; hosted acceptance and complete reference-host identity remain separate. |
+
+Evidence files record bounded observations; they are not production inputs.
+Future hosted records should retain their site revision, game hash and browser
+identity, so the evidence remains interpretable after another deployment.

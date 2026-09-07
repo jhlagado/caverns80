@@ -24,6 +24,8 @@ STRPRO:              DB ">",0
 STRCARPR:      DB "You are carrying ",0
 STRNOT:             DB "nothing.",0
 STRANO:             DB "Another adventure? ",0
+VOLTEXT: DB "Y: restart, N: exit, C: cancel",13,10,"Another adventure? ",0
+CANTAIL: DB "ANCEL",0
 STRSCOPR:         DB "You have a score of ",0
 STRSCOMI:            DB " out of a possible 126 points in ",0
 STRSCOSU:         DB " moves.",0
@@ -150,7 +152,8 @@ STRHELTE:
         DB "your saved games.",13,10,13,10
         DB "RESTART starts another adventure after confirmation. QUIT displays "
         DB "your score and asks whether you want another adventure; answer N to "
-        DB "return to CP/M. Ctrl-C returns immediately to CP/M, so save first.",13,10,13,10
+        DB "return to CP/M, Y to start fresh, or C to cancel and keep playing. "
+        DB "Ctrl-C returns immediately to CP/M, so save first.",13,10,13,10
         DB "When journeying through Iotunheim and Svartalfheim it may help to make "
         DB "a map. Beware of paths that curve and double back on themselves, "
         DB "particularly in the forest. You will also find a compass of "

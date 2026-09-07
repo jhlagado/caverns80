@@ -12,7 +12,12 @@ The assembled CAVERNS.COM is exercised through a deterministic Z80 runtime and a
 - Informational detours before every full-route action leave action count, randomness and all route checkpoints unchanged.
 - Four nonzero random seeds exercise720 bounded commands with valid-state, prompt, restart, stack-range and program-end canary checks.
 - Static map verification requires ordinary compass reversibility, explicitly enumerates six puzzle-gated exceptions and proves all54 rooms reachable in the completed graph. This graph proof does not substitute for playing every room.
+- The [ordinary-command world tour](../../test/world-tour.test.mjs) completes the winning route and physically visits the remaining rooms, covering all 54 with the candle lit. The [room matrix](room-matrix.md) gives each room and the post-victory route.
 - Save tests cover corruption, validation, missing files, replacement, backup recovery and injected disk failures. Source-specific test files contain the exact partitions.
+
+## Clue and scenery limits
+
+The route reads the crypt and castle inscriptions and uses VARD and GALAR. The added room tour sees the Sacred Key inscription through LOOK in room 17; READ there still returns “Nothing happens”. All 24 represented objects have examination text, with presence checks, but contextual scenery falls through to READ. This does not prove meaningful responses for every noun mentioned in prose. The [architecture disposition](../design/cpm-game.md#release-disposition-of-playability-proposals) records remaining parser, confirmation and playability checks.
 
 ## Terminal control flow
 
