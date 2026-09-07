@@ -2,9 +2,10 @@
 
 > **Spoilers:** This development document discusses the map, puzzles, game rules, or solutions. Read it after playing if you want to discover the adventure yourself.
 
-8 September 2026. Proposed implementation contract, grounded in the
-[baseline assessment](../reports/cpm-baseline.md). These interfaces and saves
-are not implemented yet.
+8 September 2026. Implementation contract grounded in the
+[baseline assessment](../reports/cpm-baseline.md), with the implemented release
+and remaining playability limits recorded below. The original acceptance
+requirements remain in force; hosted delivery has its own verification gate.
 
 ## Player journey and ownership
 
@@ -99,9 +100,9 @@ and danger. Improve the player's ability to understand and act on the world.
 | Playtest | Candle/resource pacing | A careful first-time player has room to explore; test a complete route with detours and failed physical actions, not only an optimal walkthrough |
 | Playtest | Optional graduated hints | An explicit HINT command progresses from a nudge to a stronger clue; ordinary HELP stays spoiler-free |
 
-Named slots can use CP/M-compatible 8.3 names. The default remains
-`CAVERNS.SAV`; settle bounded filename parsing and permitted drive selection in
-M2. Save files describe game state, while downloaded disk images preserve the
+Named slots use one to eight letters, digits or underscores, followed by the
+fixed `.SAV` extension on the current CP/M drive. Drive prefixes and arbitrary
+extensions are rejected. The default is `CAVERNS.SAV`. Save files describe game state, while downloaded disk images preserve the
 whole CP/M session's files. Explain that distinction in the player guide.
 
 Define successful actions, failed physical attempts and informational requests
@@ -123,6 +124,40 @@ These are not needed for a strong first release. A deterministic test harness,
 data validation and small assembly interfaces will improve development without
 turning this game into a general-purpose adventure framework.
 
+## Release disposition of playability proposals
+
+Named recoverable saves, compass aliases, inventory aliases, free informational
+commands, bounded line editing, 78-column wrapping and paged story/HELP are
+implemented. The source is native ATOM with 8.3 module names and a 500-line
+build limit. See the [player guide](../player-guide.md) for accepted commands.
+
+EXAMINE/X has a 24-object description table and presence checks. Contextual READ
+covers the crypt and castle inscriptions. The scenery and room-17 limits are
+recorded below; the broader consistent-object-reference requirement is not
+closed merely by the table's existence.
+
+Combat retains risk. A carried sword is required, defeated opponents reset
+fatigue, and the ordinary full route and alternate order complete with the
+fixed initial seed. Four seeded stress runs exercise other histories. These
+results do not establish every seed's solvability or replace retreat and
+first-player balance review. The candle warns at turn 201 and expires at 230;
+a route with physical detours and the complete 54-room tour finish while lit.
+This establishes measured slack, not unlimited exploration time.
+
+The parser retains deterministic table-order matching rather than a new
+ambiguity resolver. Unknown input, absent objects and missing tools have
+responses, but the proposed comprehensive ambiguity policy needs a separate
+review. QUIT and RESTART use the existing “Another adventure?” prompt: yes
+starts fresh and no exits to CP/M. This is an ending/restart choice, not a
+cancel-and-resume confirmation for unsaved progress. Keep that distinction
+visible when assessing the confirmation requirement.
+
+Graduated HINT is deferred: no hint command is implemented, and the first
+release uses contextual inscriptions and spoiler-free HELP. A larger parser,
+graphics, automatic mapping, quest markers, undo and new regions remain deferred
+to preserve the bounded first-release scope. These optional deferrals do not
+waive required clue, input or persistence acceptance checks.
+
 ## Map legibility
 
 John confirmed that simplifying the BASIC map was an intentional Caverns80
@@ -135,7 +170,7 @@ edges, and rerun full progression after each map revision.
 
 ## Persistent saves
 
-Propose a default `CAVERNS.SAV` on the current writable drive. Serialize a magic
+The implemented default is `CAVERNS.SAV` on the current writable drive. Serialize a magic
 identifier, format version, payload length, game-rules version, checksum and
 complete gameplay state, including random state and combat/puzzle counters.
 Define byte order and record padding. Derived descriptions and temporary parser
@@ -173,47 +208,39 @@ release, not only a local host build.
 
 ## Magic words and inscription puzzles
 
-John invited revisions to the magic words while retaining discovery through
-inscriptions. Current `cmdGalar` returns the player to the cave entrance (room
-16). Current `cmdApe` opens the crypt's east exit to the tiny cell (room 38);
-it does not itself transport the player. The crypt clue uses APE to complete
-GRAPE and APEX. The castle inscription `hzb tzozi` decodes to SAY GALAR using
-the reversed alphabet. These are source observations, not completed-play evidence.
+The release uses VARD for the crypt and retains GALAR for return travel.
+The old `CMDAPE` and `TOKENAPE` assembly labels remain internal names; the
+player token is VARD. APE is no longer the advertised puzzle word.
 
-The current READ/PRAY response in the crypt supplies a Galar clue while the room
-text contains the APE puzzle. Separate those two clue chains so each inscription
-has a clear purpose and location. Preserve discovery and deduction, with enough
-in-world evidence that a player need not guess an arbitrary password.
+In room 37, the description invites READ. READ or PRAY prints the keeper's
+letters V, A, R, D in left-to-right order and explains that speaking the name
+opens the eastern seal. VARD sets the dynamic eastern exit to room 38; it does
+not move the player. The four carved stones are described scenery in one
+inscription, rather than four new collectible objects. No knowledge of a real
+historical language is needed.
 
-Recommended proposal: retain GALAR for the return spell and strengthen its
-inscription. It already sounds like a fantasy name; the greater problem is
-explaining the mirrored-alphabet mechanism. Place a short, discoverable clue
-near the castle inscription, such as: “Read the letters as their shadows:
-the first is the last.” The return destination should be recognizable in the
-spell's response and foreshadowed through a matching mark at the cave entrance.
-Do not require knowledge of a real historical language or mythology.
+In castle courtyard 50, the description contains `hzb tzozi`. READ or PRAY
+supplies the mirrored-alphabet clue. Reversing the alphabet produces SAY GALAR.
+GALAR returns to cave entrance 16 and resets sword fatigue. These commands do
+not require a hidden “has read inscription” flag, so a returning player can use
+the known words. Token matching accepts the bare word and SAY followed by it.
 
-Replace APE's English word-completion joke with a fictional ritual word, for
-example VARD. This is a proposed invented name, not a claim of historical Norse
-meaning. A crypt inscription might read: “The keeper's name is broken among
-the four stones. Speak it, and the eastern seal shall yield.” Four nearby,
-examinable stones supply the letters with a clear ordering clue. Keep every
-required clue accessible before the sealed exit. If that introduces too much
-new scenery, prefer one short inscription puzzle over a multi-room fetch quest.
+The [full route](../../test/support/full-route.mjs) reads both puzzle clues and
+uses both words through ordinary commands. [Puzzle replay](../../test/puzzle-replay.test.mjs)
+checks save/restore around every route action. The [54-room tour](../reports/room-matrix.md)
+also uses GALAR after victory. Dedicated wrong-word and every-location repeat
+partitions have not been established by those route tests; they remain separate
+acceptance checks rather than inferred coverage.
 
-Support both the bare discovered word and SAY <word>. A wrong word should give
-a brief response without consuming scarce resources. By default, preserve the
-ability to use a known password on a replay; do not add an invisible “has read
-inscription” prerequisite. Any restriction on teleporting with treasure, during
-combat, or from particular rooms is a gameplay change requiring an explicit
-rule and solvability test. Retain current teleport availability until such a
-change is justified through playtesting.
-
-Names and exact inscription prose remain proposals. M2 must select them, align
-room descriptions and READ/EXAMINE responses, and test discovery, wrong words,
-correct words, repeat use, return travel and save/load of the opened passage.
-The full-game replay must encounter the clues naturally. Keep puzzle solutions
-in maintainer tests and the spoiler walkthrough, separate from ordinary HELP.
+READ in room 17 still returns “Nothing happens”, although LOOK displays its
+Sacred Key inscription. The room-tour test proves that LOOK exposes that clue.
+This is a known presentation inconsistency, not an inaccessible-room defect.
+EXAMINE describes all 24 represented objects when present or carried; absent
+objects are rejected. Unrecognized scenery falls through to contextual READ.
+Consequently it inherits READ's limited room coverage. Executed checks confirm
+EXAMINE STONES and X STONES show the crypt inscription; singular EXAMINE STONE
+selects the collectible object and rejects it when absent. Broader scenery
+handling and discovery testing remain explicit playability work.
 
 ## Automated game verification
 

@@ -8,8 +8,8 @@ in 1982; the Microbee release followed in 1983.
 The current game has passed a complete 126-point adventure in the development
 harness and through actual native and WebAssembly CP/M hosts. These results
 establish a playable route, not completion of every release requirement in the
-[roadmap](../plans/cpm-roadmap.md). Publication and hosted-browser acceptance
-remain separate work.
+[roadmap](../plans/cpm-roadmap.md). The upstream release is published; consumer
+deployment and hosted-browser acceptance remain open.
 
 ## Evidence snapshot
 
@@ -27,41 +27,53 @@ state checks after each command, a completed-game save and return to CCP.
 The paginated source revision is `c2926e2be370e574b80666ecbe6db5c459674fa5`.
 A subsequent local Chromium run completed the same 147-command route for
 126 points, traversed eight introduction pages, and verified reload/load.
-Its command-to-prompt p95 was 18.74 ms. Export/import and the published site
-still require separate evidence. See the [performance report](performance.md).
+Its command-to-prompt p95 was 18.74 ms. The hosted site still requires its own
+full progression and persistence evidence, including export/import. See the [performance report](performance.md).
 
-The earlier module/native/WASM logs remain historical evidence. Current local
-browser samples are in the coordinator workspace at
-`work/caverns/browser-full-report.json`. `/tmp/caverns-full-media-proof.log`
-records real WASM CP/M data-full and directory-full saves failing safely with
-the current COM. The repeatable owners are [the CP/M proof](../../tools/prove-cpm.mjs)
-and [the full-media proof](../../tools/prove-save-failures.mjs). Archive run logs
-with their exact source, host and artifact identities for release.
+The [archived CPU samples](evidence/command-costs.json),
+[WASM full-route proof](evidence/cpm-proof.json),
+[full-media proof](evidence/save-failure-proof.json) and
+[local browser record](evidence/browser-local.json) retain current qualification
+results. The repeatable owners are [the CP/M proof](../../tools/prove-cpm.mjs)
+and [the full-media proof](../../tools/prove-save-failures.mjs).
 
 The complete allocation is 0100h–59C6h exclusive, including the reserved
-512-byte stack at 57C6h–59C6h. There is no dynamic allocation.
-Triptych integration is prepared against main at `db2bc37`; its full consumer
-checks are running at this snapshot. Neither pending checks nor an integration
-pull request establish hosted delivery.
+512-byte stack at 57C6h–59C6h. There is no dynamic allocation. The
+[stack audit](cpm-stack.md) records entry, stack ownership and CP/M termination.
+
+The upstream [v0.1.0 release](https://github.com/jhlagado/caverns80/releases/tag/v0.1.0)
+is published from the paginated source revision above. Triptych integration at
+`a6a63d7` has passed the full local `npm run check`; its
+[Linux run](https://github.com/jhlagado/triptych/actions/runs/34142439421)
+passed. [Consumer PR 5](https://github.com/jhlagado/triptych/pull/5)
+was merged at `1bce80ad60eaeb27ae019787ba659ab42282a84c`. The
+[deployment run](https://github.com/jhlagado/triptych/actions/runs/34144053990)
+is running. A merged pull request does not establish hosted delivery.
+
+The later ordinary-command [54-room tour](room-matrix.md), in `058faa6`,
+adds coverage without changing the released COM. Its branch
+[Linux check](https://github.com/jhlagado/caverns80/actions/runs/34143150353)
+passed; [upstream PR 4](https://github.com/jhlagado/caverns80/pull/4) has merged.
+The 50-test count above identifies release qualification before that added test.
 
 ## Milestone matrix
 
 | Requirement | Current evidence | Remaining acceptance work |
 | --- | --- | --- |
-| M1: native ATOM and CP/M entry/exit | [Build](../../tools/build.mjs), [runtime](../../src/system.asm), [startup](../../src/startup.asm), and passing host runs | Freeze the release revision and report the complete allocation against every supported resident layout. |
+| M1: native ATOM and CP/M entry/exit | [Build](../../tools/build.mjs), [runtime](../../src/system.asm), [startup](../../src/startup.asm), and passing host runs | The release revision is fixed; consumer checks validate the complete allocation against supported resident layouts. Hosted acceptance remains M3. |
 | M1: ordinary opening route | [Opening tests](../../test/opening.test.mjs) cross the bridge and reach the cave candle without stage commands | Local browser full-route evidence exists; retain it with the qualified artifact. |
 | M1: input and aliases | [Regression tests](../../test/regressions.test.mjs) cover overflow draining/rejection, backspace, empty input, pseudo-nouns, inventory aliases and save-slot command collisions | Review the complete command inventory against the player help; expand missing-tool and ambiguity cases where coverage is absent. |
 | M1: state and stack safety | [Stress tests](../../test/stress.test.mjs) check room/object bounds, stack bounds and a canary beyond program storage; codec tests check balanced returns | [Terminal tests](../../test/terminal-paths.test.mjs) exercise every current ending dispatch repeatedly; preserve the separate resident-layout qualification. |
-| M1: repeatable measurement | Earlier per-command CPU baseline and current local browser p95 18.74 ms | Refresh CPU samples for the paginated COM; qualify the hosted browser separately. |
-| M2: complete adventure | [Full-route test](../../test/full-route.test.mjs) banks every treasure for 126 points; native and WASM hosts also complete | [Coverage report](coverage.md) records route, graph and ending coverage, including limits of injected-state tests. |
-| M2: alternate order and replay | [Puzzle replay](../../test/puzzle-replay.test.mjs) replays every route action across save/restore and moves oak-door/demon puzzles earlier | Explicitly cover every irreversible puzzle boundary and additional meaningful alternate orders. |
+| M1: repeatable measurement | Earlier per-command CPU baseline and current local browser p95 18.74 ms | Current CPU samples are archived in the performance report; qualify the hosted browser separately. |
+| M2: complete adventure | [Full-route test](../../test/full-route.test.mjs) banks every treasure for 126 points; native and WASM hosts also complete | [Coverage report](coverage.md) records route and ending coverage; the [room matrix](room-matrix.md) adds ordinary-command visits to all 54 rooms. Its test/report PR has merged. |
+| M2: alternate order and replay | [Puzzle replay](../../test/puzzle-replay.test.mjs) replays every route action across save/restore and moves oak-door/demon puzzles earlier | Every full-route action is replayed across save/restore, including irreversible transitions. The tested alternate order is documented; other orders remain outside that proof. |
 | M2: exploration and balance | Four seeded 180-command stress runs pass; the full route tolerates LOOK/HELP/LIST before every command | A physical out-and-back detour route also passes with its candle lit. Four extra turns establish modest slack; John's playthrough remains design feedback. |
 | M2: long games and restart | Counter-crossing and seeded restart assertions pass | [Terminal tests](../../test/terminal-paths.test.mjs) enumerate all current ending dispatches with repeated restart and exit checks; branch fixtures do not prove natural reachability. |
 | M2: save integrity | [Codec tests](../../test/save-codec.test.mjs) use an independent CRC oracle, reject every single-bit corruption and reject invalid fields without publication | Review cross-field invariants against reachable gameplay states whenever the rules change. |
 | M2: save failure recovery | [Disk tests](../../test/save-disk.test.mjs) cover read-only slots/drives, rejected loads, before-effect faults and after-effect recovery in a fresh game process | Real WASM CP/M data-full and directory-full proofs pass. Power-loss durability and arbitrary interruption timing remain outside these proofs. |
 | M2: story and rules | [Story/help tests](../../test/story-help.test.mjs), [text](../../src/strings.asm), and [player guide](../player-guide.md) cover the original narrative, revised commands and heritage | Keep text and command behaviour aligned through subsequent changes. |
 | M2: map and clue revisions | [Map tests](../../test/map.test.mjs) check ordinary compass reversibility with documented puzzle exceptions; [map report](map-revisions.md) records changes | Audit every mandatory clue and classify generic scenery/stub responses. Completion alone does not prove that players can discover the solution. |
-| M3: release and integration | Local game, real-host and local browser proofs exist; main-based consumer integration is under check | Publish an identified upstream artifact, update Triptych's component lock and provenance, and pass owner/consumer Linux CI and full consumer checks. |
+| M3: release and integration | v0.1.0 published; exact COM pinned in Triptych; owner Linux CI and full local consumer checks pass | Consumer Linux CI passed and the integration merged; deployment is running. |
 | M3: browser persistence and publication | Local browser completion and reload/load established | Finish disk export/reimport, existing-media preservation and exact deployed-asset checks on the hosted site. |
 
 [Pager tests](../../test/pager.test.mjs) cover the paginated introduction and
@@ -89,11 +101,11 @@ host or storage failure.
 
 ## Work needed before closing delivery
 
-First finish the coverage, playability and performance evidence above, preserving
-a reproducible command transcript for each failing scenario. Archive the exact
-successful native and WASM proofs with the build manifest. Then qualify the
-upstream release and consume that artifact in Triptych through its normal
-release mechanism.
+Finish deployment
+and reconcile remaining clue/playability checks above. Preserve reproducible
+transcripts and exact artifact identities with the final evidence. The [native full-route record](evidence/native-proof.json) identifies the
+consumer revision, executable hashes, command route, saved score and subsequent
+CCP command.
 
 The final acceptance run must use the published browser site: complete the
 adventure, save, return to CP/M, reload and continue, and export/reimport the

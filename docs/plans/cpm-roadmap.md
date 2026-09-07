@@ -2,8 +2,10 @@
 
 > **Spoilers:** This development document discusses the map, puzzles, game rules, or solutions. Read it after playing if you want to discover the adventure yourself.
 
-8 September 2026. This roadmap plans delivery; it does not claim implementation
-completion. The [baseline](../reports/cpm-baseline.md) records source evidence and
+8 September 2026. This roadmap retains the delivery acceptance criteria.
+Implementation and local qualification have progressed through M1 and M2;
+M3 remains open until the published browser passes the hosted acceptance run.
+The [baseline](../reports/cpm-baseline.md) records source evidence and
 the author's confirmed progress. The [architecture](../design/cpm-game.md) defines
 the proposed CP/M and save boundaries.
 
@@ -21,6 +23,23 @@ Each milestone leaves a playable build and evidence for the next stage. Scheduli
 should be estimated after the first ATOM build and opening-route tests; current
 source volume does not establish remaining effort.
 
+## Current delivery status
+
+The upstream [v0.1.0 release](https://github.com/jhlagado/caverns80/releases/tag/v0.1.0)
+is published from `c2926e2be370e574b80666ecbe6db5c459674fa5`. Its
+22,726-byte COM has SHA-256
+`662445028d6c55d58f5497032853803d181e128082ed1f1264db1e010cd162e3`.
+The [implementation report](../reports/implementation-status.md) links the
+opening, complete adventure, saves, memory and performance evidence.
+The later [room tour](../reports/room-matrix.md) demonstrates ordinary-command
+visits to all 54 rooms; that test and report were merged in upstream PR 4 after Linux CI passed.
+
+Triptych integration at `a6a63d7` passes the full local `npm run check`.
+[Consumer PR 5](https://github.com/jhlagado/triptych/pull/5) passed Linux CI
+and was merged at `1bce80ad60eaeb27ae019787ba659ab42282a84c`.
+[Deployment](https://github.com/jhlagado/triptych/actions/runs/34144053990) is running at this snapshot. Hosted full progression, persistence, media
+preservation and downloaded-asset identity checks remain M3 acceptance work.
+
 ## M0 — Establish the baseline
 
 Deliver the three linked documents, distinguish source-present routines from
@@ -28,7 +47,8 @@ proven play, record canonical authority and identify concrete technical risks.
 Check source references and document links. This gate establishes a development
 plan; execution coverage remains an explicit M1 task.
 
-Status: documentation prepared on 8 September 2026. No game code changed.
+Status: baseline documentation was prepared on 8 September 2026 before the
+implementation. Its source observations remain a dated historical record.
 
 ## M1 — Play the opening in CP/M
 
@@ -151,6 +171,6 @@ qualified browser distribution through Triptych's existing release process.
 | Release timing | Upstream qualification precedes consumer pinning and deployment | M3 exact-artifact provenance |
 | Existing browser disks | Preservation on reopen; explicit installation/update path | M3 fresh-versus-saved tests |
 
-Next task: M1, beginning with a native ATOM COM and a repeatable opening-route
-test. The documentation goal ends with this plan; the full-game delivery goal
-should use M1–M3 acceptance evidence when implementation is commissioned.
+Next task: finish consumer CI and deployment, then run the M3 acceptance
+sequence against the actual published website. Reconcile each remaining
+requirement in the implementation report before closing delivery.

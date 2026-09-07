@@ -29,10 +29,8 @@ BDOS operations, terminal transport, disk access, browser rendering and host
 scheduling. Dividing by a nominal CPU frequency therefore gives only a game-code
 estimate, not an end-to-end response time. No hardware timing is claimed. This is
 a current-build baseline, not evidence of an improvement over an unmeasured
-older implementation. The figures above remain a historical CPU baseline; they are not attributed
-to the later paginated executable. The currently available raw CPU report is
-for hash `7eb48a09bfbf59618dd9fee08ceae0470fb4058646d2233a54a5fe7994d31958`,
-so a fresh measurement is required before publishing paginated-build CPU costs.
+older implementation. The figures above remain a historical CPU baseline.
+The paginated release measurements and their archived raw samples appear below.
 
 ## Current paginated build and local browser
 
@@ -44,8 +42,7 @@ One local Chromium run completed all 147 route commands and reached 126 points.
 Eight introduction pages were traversed; human pager waiting is excluded from
 the command samples. Enter-dispatch to observed-prompt wall time, including
 automation overhead, was **18.74 ms at p95**, with a **26.22 ms maximum**.
-The raw samples are in the coordinator workspace at
-`work/caverns/browser-full-report.json`.
+The raw samples are archived in [the local browser record](evidence/browser-local.json).
 
 This is a local browser observation, not physical display latency, an ESP32
 measurement or a hosted-site result. The report does not identify a complete
@@ -68,3 +65,9 @@ winning route, page reload and restoration of the winning save. Its measured
 This includes Playwright observation overhead on the local macOS host and is
 not a guarantee for other machines. Human typing and story-page pauses are
 excluded from those command samples. Hosted measurements remain outstanding.
+
+The upstream v0.1.0 release contains this measured COM. Triptych at `a6a63d7`
+has passed its full local checks; Linux CI passed and hosted deployment remains pending
+at this snapshot. The hosted timing record must identify the browser version,
+reference host, consumer revision and executable hash before the proposed
+p95 response target can be assessed for that environment.
