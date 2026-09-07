@@ -4,7 +4,8 @@
 
 8 September 2026. This roadmap retains the delivery acceptance criteria.
 Implementation and local qualification have progressed through M1 and M2;
-M3 remains open until the published browser passes the hosted acceptance run.
+M3 hosted acceptance has passed for v0.1.1; the requirements below remain the
+contract for subsequent releases.
 The [baseline](../reports/cpm-baseline.md) records source evidence and
 the author's confirmed progress. The [architecture](../design/cpm-game.md) defines
 the proposed CP/M and save boundaries.
@@ -29,16 +30,18 @@ The upstream [v0.1.1 release](https://github.com/jhlagado/caverns80/releases/tag
 is published from `0a0a67fda6163fdad982be7d5d20031d2b151c4d`. Its
 22,896-byte COM has SHA-256
 `6e4c4154d7136645c18effccfc5d60ca3d59ae7b19a963b389608ecaf18e2dfb`.
-All 57 owner tests and Linux CI pass. The [implementation report](../reports/implementation-status.md)
-links complete adventure, saves, memory and performance evidence. The
+All 58 owner tests pass. The [implementation report](../reports/implementation-status.md)
+and [delivery acceptance record](../reports/delivery-acceptance.md) link the
+complete adventure, saves, memory, performance and hosted evidence. The
 [room tour](../reports/room-matrix.md) establishes visits to all 54 rooms.
 
-The earlier v0.1.0 consumer integration passed checks and merged in PR 5;
-its deployment run is in browser verification at this snapshot. The v0.1.1
-update at `26ad80f` is under checks in
-[consumer PR 6](https://github.com/jhlagado/triptych/pull/6). Hosted full progression,
-persistence, media preservation and downloaded-asset identity checks remain
-M3 acceptance work for the qualified final version.
+Triptych revision `54bc6385f846233fc6430d9bd655857dd6ba86fd` is deployed at
+[the playable website](https://jhlagado.github.io/triptych/). Hosted acceptance
+completed the 147-command, 126-point route, save/reload, export/reimport and
+continued play. Existing-media reopening was byte-exact; explicit upgrade
+preserved unrelated files, system tracks and the previous save. Fetched assets
+match the qualified release. M1–M3 delivery evidence is recorded below and in
+the linked acceptance report.
 
 ## M0 — Establish the baseline
 
@@ -171,6 +174,7 @@ qualified browser distribution through Triptych's existing release process.
 | Release timing | Upstream qualification precedes consumer pinning and deployment | M3 exact-artifact provenance |
 | Existing browser disks | Preservation on reopen; explicit installation/update path | M3 fresh-versus-saved tests |
 
-Next task: finish consumer CI and deployment, then run the M3 acceptance
-sequence against the actual published website. Reconcile each remaining
-requirement in the implementation report before closing delivery.
+The delivery acceptance sequence has passed for v0.1.1. Future changes must
+repeat the applicable checks against their own artifact identity. John's
+playthrough can now inform further gameplay work without substituting for
+these release checks.

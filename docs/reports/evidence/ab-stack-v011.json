@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "scope": "two-drive E300/EB00/F900 host integration, exact native/WASM bytes and terminal state, basic pinned-tool success/error lifetimes and fresh reopen",
+  "limits": [
+    "not browser drive-set persistence or ESP32 qualification",
+    "maximum admitted tool buffers/capacity failures and generated-program failure/trap lifetimes require separate qualification",
+    "instruction-level PC/SP and RAM observations are WASM measurements; native comparison covers observable console and complete images"
+  ],
+  "bootstrapSha256": "6ca90515ea8d0824291a26dce3d57a8854cdada6eec8e6aa29d35f3ea0c3c587",
+  "residentSha256": {
+    "ccp": "767891db9e1322b5dd5c3e73a2ab87c85756456f74517762ff018e0b6dbd2a63",
+    "bdos": "817b0e03552db6a2b369471402524e6c1bebf54163f0d95b75b911c06642fce5"
+  },
+  "profile": {
+    "ccp": 58112,
+    "bdos": 60160,
+    "bios": 63744,
+    "loadBytes": 57856,
+    "toolStackTop": 58368
+  },
+  "component": {
+    "name": "CAVERNS.COM",
+    "bytes": 22896,
+    "sha256": "6e4c4154d7136645c18effccfc5d60ca3d59ae7b19a963b389608ecaf18e2dfb"
+  },
+  "executions": [
+    {
+      "name": "CAVERNS.COM",
+      "entryPc": 256,
+      "entrySp": 60139,
+      "minimumAppSp": 23102,
+      "sawE400": false,
+      "returnPc": 5,
+      "returnSp": 23150,
+      "exitMethod": "BDOS function 0",
+      "driveAtWarmBoot": 1,
+      "residentReloadObserved": true
+    }
+  ],
+  "sourceReportSha256": "88a763a99ecd6a34a4836ce2c1a3a7a19b0559ccb311399c9c9f9883c9a168b9",
+  "consumerRevision": "26ad80f932657799fc18a4c2ade7063032c2444d",
+  "reproduce": "node tools/prove-large-ab-apps.mjs in the qualified Triptych checkout"
+}
