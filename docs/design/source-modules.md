@@ -24,6 +24,7 @@ by the build so that individual modules remain convenient to read and edit in Ed
 | commands.asm | Command aliases, file-command priority and examination |
 | savecode.asm | Save format, validation, checksum and state transfer |
 | savedisk.asm | CP/M disk replacement and recovery |
+| pager.asm | Paged introduction and HELP, with explicit continuation input |
 | system.asm | Console output, wrapping and random number generator |
 | numbers.asm | Decimal word output |
 | strings.asm, tables.asm | Text and world data |
@@ -32,3 +33,12 @@ by the build so that individual modules remain convenient to read and edit in Ed
 The initial split preserves the previous byte order. Cross-module labels use the
 same identifiers; it introduces no runtime calls or extra allocation. Build and
 run the executable tests with `npm run check`.
+
+Descriptive symbol metadata is maintained in [tools/symbol-map.json](../../tools/symbol-map.json),
+validated by the build and emitted as a generated address map for tests. It is
+host-side metadata, not assembly translation or game runtime storage.
+
+The current paginated build is covered by 50 executable tests, including
+[test/pager.test.mjs](../../test/pager.test.mjs). Real CP/M proofs use
+[tools/prove-cpm.mjs](../../tools/prove-cpm.mjs) and disk-capacity failure proofs
+use [tools/prove-save-failures.mjs](../../tools/prove-save-failures.mjs).

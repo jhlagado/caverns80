@@ -10,7 +10,7 @@ obsolete debugger settings, stale introductory instructions and old generated
 artifacts. The initial audit recorded recommendations. The author subsequently approved
 the cleanup; the applied changes are recorded below.
 
-## Symbol-map purpose
+## Original audit: symbol-map purpose
 
 `src/symbols.json` contains 628 descriptive-name-to-native-label mappings.
 `tools/build.mjs` reads it after ATOM assembly and uses it to name entries in
@@ -30,9 +30,9 @@ the build validate mappings. Alternatively, tests could use native labels and
 the map could disappear entirely. Moving and pruning preserves readable tests
 with less disruption. Neither choice should change a single COM byte.
 
-## Maintained files
+## Original inventory and disposition
 
-Each existing non-generated project file is listed below. `node_modules` and Git
+The pre-cleanup non-generated project files are listed below. `node_modules` and Git
 internal files are excluded from the source inventory and addressed separately.
 
 | File | Justification and recommendation |
@@ -140,5 +140,26 @@ The symbol map now lives at `tools/symbol-map.json`; the nine stale mappings
 were removed and the build rejects any future stale mapping. The obsolete
 VS Code launch files, old generated HEX/listing/debug outputs, empty source
 directories and Finder metadata were removed. README now documents the actual
-ATOM build. The 47 executable checks pass after cleanup. The earlier inventory
+ATOM build. The current paginated build passes 50 executable checks. The earlier inventory
 above records why those changes were made.
+
+
+## Current inventory additions and corrections
+
+Inspected against paginated source `c2926e2be370e574b80666ecbe6db5c459674fa5`.
+The earlier table is a record of cleanup decisions, not a list of files still
+awaiting removal. The dated BASIC baseline report remains unchanged.
+
+| Current file | Purpose and disposition |
+| --- | --- |
+| `tools/symbol-map.json` | Keep. Current validated descriptive-symbol metadata; replaces the removed `src/symbols.json`. |
+| `src/pager.asm` | Keep. Paged story and HELP output. Native ATOM source with an 8.3 filename. |
+| `test/pager.test.mjs` | Keep. Pager continuation, completion and state/stack tests. |
+| `tools/prove-cpm.mjs` | Keep. Real native/WASM CP/M full-route and save proof through an explicitly selected Triptych checkout. |
+| `tools/prove-save-failures.mjs` | Keep. Private real WASM CP/M data-full and directory-full fixtures; both pass for the current COM. Include this new tool in the next reviewed commit. |
+
+Generated `build/symbols.json` now derives from `tools/symbol-map.json`.
+The current COM is 22,726 bytes with SHA-256
+`662445028d6c55d58f5497032853803d181e128082ed1f1264db1e010cd162e3`.
+`build/command-costs.json` still identifies an earlier binary; regenerate it for
+current CPU measurements rather than relabelling historical samples.
