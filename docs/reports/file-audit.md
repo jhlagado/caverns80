@@ -182,3 +182,30 @@ These files extend the inventory without entering the CP/M executable:
 Evidence files record bounded observations; they are not production inputs.
 Future hosted records should retain their site revision, game hash and browser
 identity, so the evidence remains interpretable after another deployment.
+
+## Version 0.1.1 additions
+
+| File | Purpose and disposition |
+| --- | --- |
+| `test/cancel-read.test.mjs` | Keep. Voluntary cancellation preserves state and stack; death cannot cancel; READ exposes the room-17 inscription. |
+| `test/magic-words.test.mjs` | Keep. Wrong/repeated words, bare/SAY forms and contextual crypt scenery. |
+| `docs/reports/evidence/native-proof.json` | Keep. Native CP/M full progression, saved score and return-to-CCP evidence, identified by its recorded artifact hash. |
+
+Version 0.1.1 source `0a0a67fda6163fdad982be7d5d20031d2b151c4d` passes 57
+owner tests and produces a 22,896-byte COM with SHA-256
+`6e4c4154d7136645c18effccfc5d60ca3d59ae7b19a963b389608ecaf18e2dfb`.
+Earlier inventory and measurement sections remain historical snapshots.
+
+## Final measurement and hosted evidence additions
+
+| File | Purpose and disposition |
+| --- | --- |
+| `test/performance.test.mjs` | Keep. Full-route and HELP/SAVE/LOAD guest-cycle budgets run in CI. |
+| `tools/memory-account.mjs` | Keep. Derives disjoint code/data/workspace/stack accounts from native emitted extents and verifies the current source and COM hashes. |
+| `docs/reports/memory-account.md` | Keep. Explains the measured memory partitions and buffer ownership. |
+| `docs/reports/evidence/*-v011.json` | Keep. Version-specific CPU, memory, native, WASM and save-failure records retain exact identities without replacing historical evidence. |
+| `docs/reports/evidence/hosted-*-v010.json` | Keep with the reports' spoiler context. Public website asset, full-game and disk-transfer proof for the first deployed release. |
+
+The current normal suite contains 58 tests after adding the CPU regression gate;
+the published v0.1.1 source release was qualified with 57 tests. This later test
+and reporting work does not alter the executable.

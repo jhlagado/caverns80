@@ -147,10 +147,10 @@ This establishes measured slack, not unlimited exploration time.
 The parser retains deterministic table-order matching rather than a new
 ambiguity resolver. Unknown input, absent objects and missing tools have
 responses, but the proposed comprehensive ambiguity policy needs a separate
-review. QUIT and RESTART use the existing “Another adventure?” prompt: yes
-starts fresh and no exits to CP/M. This is an ending/restart choice, not a
-cancel-and-resume confirmation for unsaved progress. Keep that distinction
-visible when assessing the confirmation requirement.
+review. QUIT and RESTART now offer C/CANCEL to resume, Y to start fresh and N to
+exit CP/M. The cancellation permission belongs to that prompt activation;
+deaths retain restart/exit without cancellation. Regression tests check state
+and stack preservation, and Ctrl-C still exits through CP/M.
 
 Graduated HINT is deferred: no hint command is implemented, and the first
 release uses contextual inscriptions and spoiler-free HELP. A larger parser,
@@ -228,13 +228,13 @@ the known words. Token matching accepts the bare word and SAY followed by it.
 The [full route](../../test/support/full-route.mjs) reads both puzzle clues and
 uses both words through ordinary commands. [Puzzle replay](../../test/puzzle-replay.test.mjs)
 checks save/restore around every route action. The [54-room tour](../reports/room-matrix.md)
-also uses GALAR after victory. Dedicated wrong-word and every-location repeat
-partitions have not been established by those route tests; they remain separate
-acceptance checks rather than inferred coverage.
+also uses GALAR after victory. [Focused magic-word tests](../../test/magic-words.test.mjs)
+add wrong-word rejection, repeated crypt use, bare/SAY forms and return travel
+without inscription history. These bounded fixtures complement the ordinary route.
 
-READ in room 17 still returns “Nothing happens”, although LOOK displays its
-Sacred Key inscription. The room-tour test proves that LOOK exposes that clue.
-This is a known presentation inconsistency, not an inaccessible-room defect.
+Version 0.1.1 makes READ in room 17 display the existing Sacred Key inscription,
+as LOOK already does. [Regression coverage](../../test/cancel-read.test.mjs)
+checks the text, unchanged gameplay and balanced stack.
 EXAMINE describes all 24 represented objects when present or carried; absent
 objects are rejected. Unrecognized scenery falls through to contextual READ.
 Consequently it inherits READ's limited room coverage. Executed checks confirm

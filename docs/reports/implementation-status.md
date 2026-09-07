@@ -13,48 +13,44 @@ deployment and hosted-browser acceptance remain open.
 
 ## Evidence snapshot
 
-The inspected final module check ran `npm run check`: native ATOM assembly and
-50 tests passed, with no failures or skipped tests. The resulting COM is 22,726
-bytes, loads at 0100h, and has SHA-256
-`662445028d6c55d58f5497032853803d181e128082ed1f1264db1e010cd162e3`.
-The ATOM revision is recorded by the [build tool](../../tools/build.mjs) in the
-generated manifest, along with every source-file hash. These identities describe
-this check; source changes require a new build and qualification.
+The published [v0.1.1 release](https://github.com/jhlagado/caverns80/releases/tag/v0.1.1)
+comes from `0a0a67fda6163fdad982be7d5d20031d2b151c4d`. Its COM is 22,896 bytes,
+loads at 0100h, and has SHA-256
+`6e4c4154d7136645c18effccfc5d60ca3d59ae7b19a963b389608ecaf18e2dfb`.
+The complete allocation ends at 5A70h exclusive, including its 512-byte stack
+at 5870h–5A70h. There is no dynamic allocation.
 
-The native-host result reports the full 126-point route, a disk save and a
-subsequent CCP command. The WASM-host result reports 147 commands, 126 points,
-state checks after each command, a completed-game save and return to CCP.
-The paginated source revision is `c2926e2be370e574b80666ecbe6db5c459674fa5`.
-A subsequent local Chromium run completed the same 147-command route for
-126 points, traversed eight introduction pages, and verified reload/load.
-Its command-to-prompt p95 was 18.74 ms. The hosted site still requires its own
-full progression and persistence evidence, including export/import. See the [performance report](performance.md).
+Native ATOM assembly and all 57 tests passed. Owner Linux runs
+[34144753343](https://github.com/jhlagado/caverns80/actions/runs/34144753343) and
+[34144898504](https://github.com/jhlagado/caverns80/actions/runs/34144898504)
+passed, and upstream PR 5 merged. Native and WASM CP/M full-route proofs and
+real CP/M full-media failure proofs passed for this hash. The
+[build tool](../../tools/build.mjs) records ATOM identity and source hashes.
 
-The [archived CPU samples](evidence/command-costs.json),
-[WASM full-route proof](evidence/cpm-proof.json),
-[full-media proof](evidence/save-failure-proof.json) and
-[local browser record](evidence/browser-local.json) retain current qualification
-results. The repeatable owners are [the CP/M proof](../../tools/prove-cpm.mjs)
-and [the full-media proof](../../tools/prove-save-failures.mjs).
+Version 0.1.1 adds cancellation of voluntary QUIT/RESTART and exposes the
+room-17 inscription through READ. [Focused tests](../../test/cancel-read.test.mjs)
+prove cancellation preserves progress and stack, while death cannot be cancelled.
+[Magic-word tests](../../test/magic-words.test.mjs) cover wrong and repeated words,
+SAY forms and contextual crypt scenery. The [room tour](room-matrix.md) proves
+ordinary-command visits to all 54 rooms and is merged upstream.
 
-The complete allocation is 0100h–59C6h exclusive, including the reserved
-512-byte stack at 57C6h–59C6h. There is no dynamic allocation. The
-[stack audit](cpm-stack.md) records entry, stack ownership and CP/M termination.
+The v0.1.0 consumer integration passed full local and Linux checks and merged
+in Triptych PR 5 at `1bce80ad60eaeb27ae019787ba659ab42282a84c`.
+Its [deployment run](https://github.com/jhlagado/triptych/actions/runs/34144053990)
+completed successfully. The public v0.1.0 site passed the
+[147-command full game](evidence/hosted-full-v010.json),
+[save/reload/export/reimport](evidence/hosted-transfer-v010.json), and
+[downloaded asset checks](evidence/hosted-assets-v010.json).
+The v0.1.1 update at `26ad80f` passes the full local consumer checks and is
+under Linux checks in [consumer PR 6](https://github.com/jhlagado/triptych/pull/6).
+The v0.1.0 hosted proofs do not establish hosted acceptance of v0.1.1.
 
-The upstream [v0.1.0 release](https://github.com/jhlagado/caverns80/releases/tag/v0.1.0)
-is published from the paginated source revision above. Triptych integration at
-`a6a63d7` has passed the full local `npm run check`; its
-[Linux run](https://github.com/jhlagado/triptych/actions/runs/34142439421)
-passed. [Consumer PR 5](https://github.com/jhlagado/triptych/pull/5)
-was merged at `1bce80ad60eaeb27ae019787ba659ab42282a84c`. The
-[deployment run](https://github.com/jhlagado/triptych/actions/runs/34144053990)
-is running. A merged pull request does not establish hosted delivery.
-
-The later ordinary-command [54-room tour](room-matrix.md), in `058faa6`,
-adds coverage without changing the released COM. Its branch
-[Linux check](https://github.com/jhlagado/caverns80/actions/runs/34143150353)
-passed; [upstream PR 4](https://github.com/jhlagado/caverns80/pull/4) has merged.
-The 50-test count above identifies release qualification before that added test.
+The earlier local Chromium v0.1.0 run completed 147 route commands for 126 points,
+traversed eight introduction pages, and verified reload/load. Its 18.74 ms p95
+belongs to that version; it is not a v0.1.1 hosted measurement. Archived records
+retain their own artifact identities. See the [performance report](performance.md),
+[stack audit](cpm-stack.md) and evidence links below. Final hosted progression,
+media preservation, export/import and asset-identity checks remain open.
 
 ## Milestone matrix
 
@@ -73,7 +69,7 @@ The 50-test count above identifies release qualification before that added test.
 | M2: save failure recovery | [Disk tests](../../test/save-disk.test.mjs) cover read-only slots/drives, rejected loads, before-effect faults and after-effect recovery in a fresh game process | Real WASM CP/M data-full and directory-full proofs pass. Power-loss durability and arbitrary interruption timing remain outside these proofs. |
 | M2: story and rules | [Story/help tests](../../test/story-help.test.mjs), [text](../../src/strings.asm), and [player guide](../player-guide.md) cover the original narrative, revised commands and heritage | Keep text and command behaviour aligned through subsequent changes. |
 | M2: map and clue revisions | [Map tests](../../test/map.test.mjs) check ordinary compass reversibility with documented puzzle exceptions; [map report](map-revisions.md) records changes | Audit every mandatory clue and classify generic scenery/stub responses. Completion alone does not prove that players can discover the solution. |
-| M3: release and integration | v0.1.0 published; exact COM pinned in Triptych; owner Linux CI and full local consumer checks pass | Consumer Linux CI passed and the integration merged; deployment is running. |
+| M3: release and integration | v0.1.1 published; 57 owner tests and Linux CI pass; current-hash native/WASM and full-media proofs pass | Consumer PR 6 updates the pin; finish its checks, merge, deployment and hosted acceptance. |
 | M3: browser persistence and publication | Local browser completion and reload/load established | Finish disk export/reimport, existing-media preservation and exact deployed-asset checks on the hosted site. |
 
 [Pager tests](../../test/pager.test.mjs) cover the paginated introduction and
@@ -101,8 +97,7 @@ host or storage failure.
 
 ## Work needed before closing delivery
 
-Finish deployment
-and reconcile remaining clue/playability checks above. Preserve reproducible
+Finish v0.1.1 consumer checks and deployment, then reconcile remaining clue/playability checks above. Preserve reproducible
 transcripts and exact artifact identities with the final evidence. The [native full-route record](evidence/native-proof.json) identifies the
 consumer revision, executable hashes, command route, saved score and subsequent
 CCP command.
@@ -121,3 +116,9 @@ records disk-data and directory exhaustion without injected BDOS failures.
 The [local browser record](evidence/browser-local.json) records pagination,
 147 commands, victory, save, page reload and restoration. These records support
 the local qualification; they do not claim that the hosted site is updated.
+
+Current v0.1.1 records: [native](evidence/native-proof-v011.json),
+[WASM](evidence/cpm-proof-v011.json), [full-media](evidence/save-failure-proof-v011.json),
+[CPU costs](evidence/command-costs-v011.json) and
+[memory accounts](evidence/memory-account-v011.json). The later performance
+gate brings the normal test suite to 58 passing tests without changing the COM.

@@ -25,20 +25,20 @@ source volume does not establish remaining effort.
 
 ## Current delivery status
 
-The upstream [v0.1.0 release](https://github.com/jhlagado/caverns80/releases/tag/v0.1.0)
-is published from `c2926e2be370e574b80666ecbe6db5c459674fa5`. Its
-22,726-byte COM has SHA-256
-`662445028d6c55d58f5497032853803d181e128082ed1f1264db1e010cd162e3`.
-The [implementation report](../reports/implementation-status.md) links the
-opening, complete adventure, saves, memory and performance evidence.
-The later [room tour](../reports/room-matrix.md) demonstrates ordinary-command
-visits to all 54 rooms; that test and report were merged in upstream PR 4 after Linux CI passed.
+The upstream [v0.1.1 release](https://github.com/jhlagado/caverns80/releases/tag/v0.1.1)
+is published from `0a0a67fda6163fdad982be7d5d20031d2b151c4d`. Its
+22,896-byte COM has SHA-256
+`6e4c4154d7136645c18effccfc5d60ca3d59ae7b19a963b389608ecaf18e2dfb`.
+All 57 owner tests and Linux CI pass. The [implementation report](../reports/implementation-status.md)
+links complete adventure, saves, memory and performance evidence. The
+[room tour](../reports/room-matrix.md) establishes visits to all 54 rooms.
 
-Triptych integration at `a6a63d7` passes the full local `npm run check`.
-[Consumer PR 5](https://github.com/jhlagado/triptych/pull/5) passed Linux CI
-and was merged at `1bce80ad60eaeb27ae019787ba659ab42282a84c`.
-[Deployment](https://github.com/jhlagado/triptych/actions/runs/34144053990) is running at this snapshot. Hosted full progression, persistence, media
-preservation and downloaded-asset identity checks remain M3 acceptance work.
+The earlier v0.1.0 consumer integration passed checks and merged in PR 5;
+its deployment run is in browser verification at this snapshot. The v0.1.1
+update at `26ad80f` is under checks in
+[consumer PR 6](https://github.com/jhlagado/triptych/pull/6). Hosted full progression,
+persistence, media preservation and downloaded-asset identity checks remain
+M3 acceptance work for the qualified final version.
 
 ## M0 — Establish the baseline
 

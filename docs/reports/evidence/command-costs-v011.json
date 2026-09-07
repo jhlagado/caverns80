@@ -1,0 +1,913 @@
+{
+  "format": "caverns-command-costs-v1",
+  "artifactSha256": "6e4c4154d7136645c18effccfc5d60ca3d59ae7b19a963b389608ecaf18e2dfb",
+  "method": "One deterministic full winning route, followed by HELP, SAVE and LOAD; emulated Z80 instruction cycles only. BDOS adapter, disk latency, terminal transport, browser rendering and host scheduling are excluded. These are not device timings.",
+  "route": {
+    "commands": 147,
+    "medianCycles": 210030,
+    "p95Cycles": 397268,
+    "maxCycles": 466871
+  },
+  "routeSamples": [
+    {
+      "command": "get compass",
+      "instructions": 27628,
+      "cycles": 226680,
+      "outputBytes": 120
+    },
+    {
+      "command": "north",
+      "instructions": 25997,
+      "cycles": 218481,
+      "outputBytes": 170
+    },
+    {
+      "command": "west",
+      "instructions": 19745,
+      "cycles": 163413,
+      "outputBytes": 88
+    },
+    {
+      "command": "west",
+      "instructions": 23759,
+      "cycles": 199833,
+      "outputBytes": 155
+    },
+    {
+      "command": "south",
+      "instructions": 22606,
+      "cycles": 187206,
+      "outputBytes": 108
+    },
+    {
+      "command": "east",
+      "instructions": 26937,
+      "cycles": 228571,
+      "outputBytes": 201
+    },
+    {
+      "command": "get coin",
+      "instructions": 28081,
+      "cycles": 235373,
+      "outputBytes": 189
+    },
+    {
+      "command": "west",
+      "instructions": 20835,
+      "cycles": 173382,
+      "outputBytes": 107
+    },
+    {
+      "command": "west",
+      "instructions": 27054,
+      "cycles": 229905,
+      "outputBytes": 207
+    },
+    {
+      "command": "get sword",
+      "instructions": 29710,
+      "cycles": 248664,
+      "outputBytes": 196
+    },
+    {
+      "command": "east",
+      "instructions": 21066,
+      "cycles": 175210,
+      "outputBytes": 107
+    },
+    {
+      "command": "north",
+      "instructions": 25085,
+      "cycles": 210278,
+      "outputBytes": 156
+    },
+    {
+      "command": "east",
+      "instructions": 19976,
+      "cycles": 165241,
+      "outputBytes": 88
+    },
+    {
+      "command": "east",
+      "instructions": 24902,
+      "cycles": 209864,
+      "outputBytes": 169
+    },
+    {
+      "command": "east",
+      "instructions": 20698,
+      "cycles": 171883,
+      "outputBytes": 101
+    },
+    {
+      "command": "east",
+      "instructions": 23526,
+      "cycles": 197445,
+      "outputBytes": 147
+    },
+    {
+      "command": "south",
+      "instructions": 28311,
+      "cycles": 239109,
+      "outputBytes": 200
+    },
+    {
+      "command": "kill troll with sword",
+      "instructions": 49253,
+      "cycles": 397268,
+      "outputBytes": 146
+    },
+    {
+      "command": "south",
+      "instructions": 25078,
+      "cycles": 209611,
+      "outputBytes": 149
+    },
+    {
+      "command": "south",
+      "instructions": 24388,
+      "cycles": 203314,
+      "outputBytes": 137
+    },
+    {
+      "command": "east",
+      "instructions": 21200,
+      "cycles": 176620,
+      "outputBytes": 107
+    },
+    {
+      "command": "get rope",
+      "instructions": 22315,
+      "cycles": 183203,
+      "outputBytes": 95
+    },
+    {
+      "command": "west",
+      "instructions": 22617,
+      "cycles": 189490,
+      "outputBytes": 136
+    },
+    {
+      "command": "west",
+      "instructions": 26248,
+      "cycles": 222404,
+      "outputBytes": 196
+    },
+    {
+      "command": "south",
+      "instructions": 37094,
+      "cycles": 318938,
+      "outputBytes": 345
+    },
+    {
+      "command": "kill dragon with sword",
+      "instructions": 46505,
+      "cycles": 370304,
+      "outputBytes": 75
+    },
+    {
+      "command": "south",
+      "instructions": 26268,
+      "cycles": 220279,
+      "outputBytes": 167
+    },
+    {
+      "command": "south",
+      "instructions": 21177,
+      "cycles": 174703,
+      "outputBytes": 84
+    },
+    {
+      "command": "get candle",
+      "instructions": 23342,
+      "cycles": 189755,
+      "outputBytes": 73
+    },
+    {
+      "command": "west",
+      "instructions": 33581,
+      "cycles": 288848,
+      "outputBytes": 316
+    },
+    {
+      "command": "north",
+      "instructions": 24491,
+      "cycles": 205215,
+      "outputBytes": 145
+    },
+    {
+      "command": "get diamond",
+      "instructions": 28412,
+      "cycles": 233985,
+      "outputBytes": 135
+    },
+    {
+      "command": "west",
+      "instructions": 16950,
+      "cycles": 138352,
+      "outputBytes": 44
+    },
+    {
+      "command": "south",
+      "instructions": 29066,
+      "cycles": 245868,
+      "outputBytes": 211
+    },
+    {
+      "command": "south",
+      "instructions": 35034,
+      "cycles": 299764,
+      "outputBytes": 310
+    },
+    {
+      "command": "west",
+      "instructions": 16964,
+      "cycles": 138442,
+      "outputBytes": 44
+    },
+    {
+      "command": "south",
+      "instructions": 31400,
+      "cycles": 266915,
+      "outputBytes": 252
+    },
+    {
+      "command": "west",
+      "instructions": 19841,
+      "cycles": 164675,
+      "outputBytes": 89
+    },
+    {
+      "command": "get key",
+      "instructions": 19773,
+      "cycles": 161976,
+      "outputBytes": 76
+    },
+    {
+      "command": "east",
+      "instructions": 29860,
+      "cycles": 254919,
+      "outputBytes": 251
+    },
+    {
+      "command": "south",
+      "instructions": 18749,
+      "cycles": 152356,
+      "outputBytes": 45
+    },
+    {
+      "command": "west",
+      "instructions": 16985,
+      "cycles": 138577,
+      "outputBytes": 44
+    },
+    {
+      "command": "west",
+      "instructions": 16971,
+      "cycles": 138487,
+      "outputBytes": 44
+    },
+    {
+      "command": "south",
+      "instructions": 18735,
+      "cycles": 152266,
+      "outputBytes": 45
+    },
+    {
+      "command": "east",
+      "instructions": 33494,
+      "cycles": 287768,
+      "outputBytes": 309
+    },
+    {
+      "command": "south",
+      "instructions": 22999,
+      "cycles": 190793,
+      "outputBytes": 115
+    },
+    {
+      "command": "east",
+      "instructions": 33738,
+      "cycles": 289920,
+      "outputBytes": 313
+    },
+    {
+      "command": "down with rope",
+      "instructions": 48103,
+      "cycles": 396768,
+      "outputBytes": 255
+    },
+    {
+      "command": "open gate with key",
+      "instructions": 51281,
+      "cycles": 421554,
+      "outputBytes": 259
+    },
+    {
+      "command": "read",
+      "instructions": 17365,
+      "cycles": 147474,
+      "outputBytes": 131
+    },
+    {
+      "command": "vard",
+      "instructions": 24654,
+      "cycles": 215376,
+      "outputBytes": 274
+    },
+    {
+      "command": "east",
+      "instructions": 25788,
+      "cycles": 218257,
+      "outputBytes": 183
+    },
+    {
+      "command": "get grill",
+      "instructions": 28277,
+      "cycles": 235612,
+      "outputBytes": 172
+    },
+    {
+      "command": "drop grill",
+      "instructions": 31613,
+      "cycles": 263074,
+      "outputBytes": 189
+    },
+    {
+      "command": "east",
+      "instructions": 17226,
+      "cycles": 140464,
+      "outputBytes": 44
+    },
+    {
+      "command": "south",
+      "instructions": 29007,
+      "cycles": 245706,
+      "outputBytes": 212
+    },
+    {
+      "command": "kill wizard with sword",
+      "instructions": 53615,
+      "cycles": 435196,
+      "outputBytes": 194
+    },
+    {
+      "command": "west",
+      "instructions": 26365,
+      "cycles": 223644,
+      "outputBytes": 195
+    },
+    {
+      "command": "get sword",
+      "instructions": 29024,
+      "cycles": 242400,
+      "outputBytes": 184
+    },
+    {
+      "command": "open gate with key",
+      "instructions": 51281,
+      "cycles": 421554,
+      "outputBytes": 259
+    },
+    {
+      "command": "east",
+      "instructions": 25788,
+      "cycles": 218257,
+      "outputBytes": 183
+    },
+    {
+      "command": "east",
+      "instructions": 17226,
+      "cycles": 140464,
+      "outputBytes": 44
+    },
+    {
+      "command": "south",
+      "instructions": 18770,
+      "cycles": 152491,
+      "outputBytes": 45
+    },
+    {
+      "command": "east",
+      "instructions": 23165,
+      "cycles": 194181,
+      "outputBytes": 141
+    },
+    {
+      "command": "north",
+      "instructions": 25695,
+      "cycles": 216117,
+      "outputBytes": 165
+    },
+    {
+      "command": "get ruby",
+      "instructions": 25721,
+      "cycles": 214098,
+      "outputBytes": 152
+    },
+    {
+      "command": "south",
+      "instructions": 24705,
+      "cycles": 206177,
+      "outputBytes": 142
+    },
+    {
+      "command": "west",
+      "instructions": 16999,
+      "cycles": 138667,
+      "outputBytes": 44
+    },
+    {
+      "command": "north",
+      "instructions": 18332,
+      "cycles": 149157,
+      "outputBytes": 45
+    },
+    {
+      "command": "west",
+      "instructions": 25587,
+      "cycles": 216643,
+      "outputBytes": 183
+    },
+    {
+      "command": "north",
+      "instructions": 16319,
+      "cycles": 130886,
+      "outputBytes": 13
+    },
+    {
+      "command": "north",
+      "instructions": 20974,
+      "cycles": 173344,
+      "outputBytes": 87
+    },
+    {
+      "command": "get pearl",
+      "instructions": 22281,
+      "cycles": 181454,
+      "outputBytes": 75
+    },
+    {
+      "command": "west",
+      "instructions": 31463,
+      "cycles": 270059,
+      "outputBytes": 280
+    },
+    {
+      "command": "kill goblin with sword",
+      "instructions": 47006,
+      "cycles": 374831,
+      "outputBytes": 83
+    },
+    {
+      "command": "kill goblin with sword",
+      "instructions": 50913,
+      "cycles": 410273,
+      "outputBytes": 147
+    },
+    {
+      "command": "south",
+      "instructions": 23543,
+      "cycles": 195716,
+      "outputBytes": 124
+    },
+    {
+      "command": "south",
+      "instructions": 24705,
+      "cycles": 206177,
+      "outputBytes": 142
+    },
+    {
+      "command": "west",
+      "instructions": 16999,
+      "cycles": 138667,
+      "outputBytes": 44
+    },
+    {
+      "command": "north",
+      "instructions": 18332,
+      "cycles": 149157,
+      "outputBytes": 45
+    },
+    {
+      "command": "west",
+      "instructions": 25587,
+      "cycles": 216643,
+      "outputBytes": 183
+    },
+    {
+      "command": "north",
+      "instructions": 16319,
+      "cycles": 130886,
+      "outputBytes": 13
+    },
+    {
+      "command": "west",
+      "instructions": 15015,
+      "cycles": 120595,
+      "outputBytes": 12
+    },
+    {
+      "command": "west",
+      "instructions": 15015,
+      "cycles": 120595,
+      "outputBytes": 12
+    },
+    {
+      "command": "west",
+      "instructions": 26323,
+      "cycles": 223297,
+      "outputBytes": 195
+    },
+    {
+      "command": "get stone",
+      "instructions": 28985,
+      "cycles": 242050,
+      "outputBytes": 184
+    },
+    {
+      "command": "south",
+      "instructions": 20785,
+      "cycles": 170678,
+      "outputBytes": 78
+    },
+    {
+      "command": "east",
+      "instructions": 20957,
+      "cycles": 174219,
+      "outputBytes": 105
+    },
+    {
+      "command": "north",
+      "instructions": 26202,
+      "cycles": 220475,
+      "outputBytes": 175
+    },
+    {
+      "command": "read",
+      "instructions": 16372,
+      "cycles": 138409,
+      "outputBytes": 115
+    },
+    {
+      "command": "east",
+      "instructions": 21610,
+      "cycles": 180354,
+      "outputBytes": 114
+    },
+    {
+      "command": "get bomb",
+      "instructions": 22734,
+      "cycles": 186949,
+      "outputBytes": 102
+    },
+    {
+      "command": "west",
+      "instructions": 24876,
+      "cycles": 210030,
+      "outputBytes": 174
+    },
+    {
+      "command": "west",
+      "instructions": 19365,
+      "cycles": 160040,
+      "outputBytes": 83
+    },
+    {
+      "command": "west",
+      "instructions": 27341,
+      "cycles": 232285,
+      "outputBytes": 212
+    },
+    {
+      "command": "galar",
+      "instructions": 23741,
+      "cycles": 205672,
+      "outputBytes": 243
+    },
+    {
+      "command": "north",
+      "instructions": 31341,
+      "cycles": 267012,
+      "outputBytes": 258
+    },
+    {
+      "command": "north",
+      "instructions": 27571,
+      "cycles": 232831,
+      "outputBytes": 197
+    },
+    {
+      "command": "east",
+      "instructions": 22848,
+      "cycles": 191318,
+      "outputBytes": 136
+    },
+    {
+      "command": "north",
+      "instructions": 24641,
+      "cycles": 206292,
+      "outputBytes": 149
+    },
+    {
+      "command": "north",
+      "instructions": 24871,
+      "cycles": 208318,
+      "outputBytes": 152
+    },
+    {
+      "command": "north",
+      "instructions": 24624,
+      "cycles": 206080,
+      "outputBytes": 148
+    },
+    {
+      "command": "west",
+      "instructions": 20467,
+      "cycles": 170055,
+      "outputBytes": 101
+    },
+    {
+      "command": "west",
+      "instructions": 24671,
+      "cycles": 208036,
+      "outputBytes": 169
+    },
+    {
+      "command": "open door with key",
+      "instructions": 42550,
+      "cycles": 342442,
+      "outputBytes": 116
+    },
+    {
+      "command": "drop coin",
+      "instructions": 26172,
+      "cycles": 215394,
+      "outputBytes": 121
+    },
+    {
+      "command": "drop compass",
+      "instructions": 31940,
+      "cycles": 262854,
+      "outputBytes": 150
+    },
+    {
+      "command": "drop ruby",
+      "instructions": 28952,
+      "cycles": 240707,
+      "outputBytes": 165
+    },
+    {
+      "command": "drop diamond",
+      "instructions": 34354,
+      "cycles": 284969,
+      "outputBytes": 189
+    },
+    {
+      "command": "drop pearl",
+      "instructions": 32828,
+      "cycles": 274381,
+      "outputBytes": 206
+    },
+    {
+      "command": "drop stone",
+      "instructions": 34240,
+      "cycles": 287171,
+      "outputBytes": 228
+    },
+    {
+      "command": "north",
+      "instructions": 25997,
+      "cycles": 218481,
+      "outputBytes": 170
+    },
+    {
+      "command": "east",
+      "instructions": 20698,
+      "cycles": 171883,
+      "outputBytes": 101
+    },
+    {
+      "command": "east",
+      "instructions": 23526,
+      "cycles": 197445,
+      "outputBytes": 147
+    },
+    {
+      "command": "south",
+      "instructions": 25316,
+      "cycles": 211697,
+      "outputBytes": 152
+    },
+    {
+      "command": "south",
+      "instructions": 25078,
+      "cycles": 209611,
+      "outputBytes": 149
+    },
+    {
+      "command": "south",
+      "instructions": 24388,
+      "cycles": 203314,
+      "outputBytes": 137
+    },
+    {
+      "command": "west",
+      "instructions": 26248,
+      "cycles": 222404,
+      "outputBytes": 196
+    },
+    {
+      "command": "south",
+      "instructions": 31786,
+      "cycles": 270391,
+      "outputBytes": 258
+    },
+    {
+      "command": "south",
+      "instructions": 26268,
+      "cycles": 220279,
+      "outputBytes": 167
+    },
+    {
+      "command": "south",
+      "instructions": 18714,
+      "cycles": 152131,
+      "outputBytes": 45
+    },
+    {
+      "command": "west",
+      "instructions": 33581,
+      "cycles": 288848,
+      "outputBytes": 316
+    },
+    {
+      "command": "north",
+      "instructions": 21740,
+      "cycles": 180019,
+      "outputBytes": 101
+    },
+    {
+      "command": "west",
+      "instructions": 16950,
+      "cycles": 138352,
+      "outputBytes": 44
+    },
+    {
+      "command": "north",
+      "instructions": 21272,
+      "cycles": 175667,
+      "outputBytes": 92
+    },
+    {
+      "command": "light bomb with candle",
+      "instructions": 57463,
+      "cycles": 466871,
+      "outputBytes": 220
+    },
+    {
+      "command": "east",
+      "instructions": 33213,
+      "cycles": 286016,
+      "outputBytes": 302
+    },
+    {
+      "command": "kill demon with sword",
+      "instructions": 49334,
+      "cycles": 397855,
+      "outputBytes": 146
+    },
+    {
+      "command": "get ring",
+      "instructions": 33285,
+      "cycles": 282998,
+      "outputBytes": 273
+    },
+    {
+      "command": "get pendant",
+      "instructions": 35664,
+      "cycles": 299981,
+      "outputBytes": 252
+    },
+    {
+      "command": "get grail",
+      "instructions": 32013,
+      "cycles": 269770,
+      "outputBytes": 233
+    },
+    {
+      "command": "get shield",
+      "instructions": 30639,
+      "cycles": 255592,
+      "outputBytes": 192
+    },
+    {
+      "command": "galar",
+      "instructions": 23741,
+      "cycles": 205672,
+      "outputBytes": 243
+    },
+    {
+      "command": "north",
+      "instructions": 31341,
+      "cycles": 267012,
+      "outputBytes": 258
+    },
+    {
+      "command": "north",
+      "instructions": 27571,
+      "cycles": 232831,
+      "outputBytes": 197
+    },
+    {
+      "command": "east",
+      "instructions": 22848,
+      "cycles": 191318,
+      "outputBytes": 136
+    },
+    {
+      "command": "north",
+      "instructions": 24641,
+      "cycles": 206292,
+      "outputBytes": 149
+    },
+    {
+      "command": "north",
+      "instructions": 24871,
+      "cycles": 208318,
+      "outputBytes": 152
+    },
+    {
+      "command": "north",
+      "instructions": 24624,
+      "cycles": 206080,
+      "outputBytes": 148
+    },
+    {
+      "command": "west",
+      "instructions": 20467,
+      "cycles": 170055,
+      "outputBytes": 101
+    },
+    {
+      "command": "west",
+      "instructions": 24671,
+      "cycles": 208036,
+      "outputBytes": 169
+    },
+    {
+      "command": "open door with key",
+      "instructions": 51555,
+      "cycles": 424569,
+      "outputBytes": 258
+    },
+    {
+      "command": "drop ring",
+      "instructions": 34408,
+      "cycles": 290326,
+      "outputBytes": 251
+    },
+    {
+      "command": "drop pendant",
+      "instructions": 39578,
+      "cycles": 332480,
+      "outputBytes": 271
+    },
+    {
+      "command": "drop grail",
+      "instructions": 38156,
+      "cycles": 322654,
+      "outputBytes": 288
+    },
+    {
+      "command": "drop shield",
+      "instructions": 45627,
+      "cycles": 388895,
+      "outputBytes": 388
+    },
+    {
+      "command": "score",
+      "instructions": 10478,
+      "cycles": 86150,
+      "outputBytes": 38
+    }
+  ],
+  "help": {
+    "command": "help",
+    "instructions": 309108,
+    "cycles": 2790364,
+    "outputBytes": 4894
+  },
+  "save": {
+    "command": "save PERF",
+    "instructions": 38043,
+    "cycles": 309832,
+    "outputBytes": 36
+  },
+  "load": {
+    "command": "load PERF",
+    "instructions": 55682,
+    "cycles": 462506,
+    "outputBytes": 323
+  }
+}

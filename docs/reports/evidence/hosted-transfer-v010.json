@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "url": "https://jhlagado.github.io/triptych/",
+  "observedAt": "2026-09-07T16:59:16.776Z",
+  "browserVersion": "151.0.7922.34",
+  "consumerRevision": "1bce80ad60eaeb27ae019787ba659ab42282a84c",
+  "comSha256": "662445028d6c55d58f5497032853803d181e128082ed1f1264db1e010cd162e3",
+  "diskSha256": "c26990bb1ea28661f3767f34e276e26e864a0fd4aeb3c5e626933c2b6537d7b0",
+  "savedSlot": "BROWSER",
+  "reload": true,
+  "reimportFreshContext": true,
+  "carriedCompassRestored": true,
+  "continuedWithLook": true
+}
