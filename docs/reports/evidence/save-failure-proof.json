@@ -1,0 +1,18 @@
+{
+  "artifactSha256": "662445028d6c55d58f5497032853803d181e128082ed1f1264db1e010cd162e3",
+  "method": "Private full-media fixtures; real WASM CP/M BDOS, not injected return codes.",
+  "results": [
+    {
+      "mode": "data-full",
+      "allocated": 175104,
+      "status": "passed",
+      "response": "SAVE\r\n\r\nSave failed. Existing recovery files have been retained.\r\n? "
+    },
+    {
+      "mode": "directory-full",
+      "allocated": 55,
+      "status": "passed",
+      "response": "SAVE\r\n\r\nSave failed. Existing recovery files have been retained.\r\n? "
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+import {readFile,writeFile} from 'node:fs/promises';
+import {createMachine} from '../test/support/machine.mjs';
+import {proveFullRoute} from '../test/support/full-route.mjs';
+const game=await createMachine(),samples=[];
+const command=game.command.bind(game);
+game.command=text=>{
+ const before=game.metrics;const output=command(text);const after=game.metrics;
+ samples.push({command:text,instructions:after.instructions-before.instructions,cycles:after.cycles-before.cycles,outputBytes:output.length});
+ return output;
+};
+proveFullRoute(game);
+const routeSamples=samples.splice(0);
+game.command('help');
+const sorted=routeSamples.map(s=>s.cycles).sort((a,b)=>a-b);
+const manifest=JSON.parse(await readFile(new URL('../build/manifest.json',import.meta.url)));
+const report={format:'caverns-command-costs-v1',artifactSha256:manifest.sha256,method:'One deterministic full winning route, followed by HELP; emulated Z80 instruction cycles only. BDOS adapter, disk latency, terminal transport, browser rendering and host scheduling are excluded. These are not device timings.',route:{commands:routeSamples.length,medianCycles:sorted[Math.floor(sorted.length/2)],p95Cycles:sorted[Math.ceil(sorted.length*.95)-1],maxCycles:sorted.at(-1)},routeSamples,help:samples[0]};
+await writeFile(new URL('../build/command-costs.json',import.meta.url),JSON.stringify(report,null,2)+'\n');
+console.log(JSON.stringify({route:report.route,help:report.help},null,2));

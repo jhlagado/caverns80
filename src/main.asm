@@ -1,12 +1,14 @@
-        .include "constants.asm"
-        .include "macros.asm"
-        .include "system.asm"
-
-        ; Main program start
-        ORG     APPSTART
-        .include "game.asm"
-
-DONE_MSG: DEFB  "Done.",0x0A,0
-        .include "strings.asm"
-        .include "tables.asm"
-        .include "variables.asm"
+; Native ATOM imports in output order.
+%INCLUDE "const.asm"
+%INCLUDE "prologue.asm"
+%INCLUDE "game.asm"
+%INCLUDE "commands.asm"
+%INCLUDE "numbers.asm"
+%INCLUDE "savecode.asm"
+%INCLUDE "savedisk.asm"
+%INCLUDE "pager.asm"
+%INCLUDE "system.asm"
+%INCLUDE "strings.asm"
+%INCLUDE "examtext.asm"
+%INCLUDE "tables.asm"
+%INCLUDE "vars.asm"
