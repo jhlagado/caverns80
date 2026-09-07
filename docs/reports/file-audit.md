@@ -215,3 +215,8 @@ and reporting work does not alter the executable.
 | `tools/prove-browser.mjs` | Keep. Repeatable exact-asset, full-game, persistence and optional old-disk upgrade proof using isolated browser contexts. |
 | `docs/reports/browser-verification.md` | Keep with spoiler warning. Documents the maintained browser proof and its required fixtures. |
 | `docs/reports/delivery-acceptance.md` | Keep with spoiler warning. Maps each original milestone to authoritative evidence and the outstanding final hosted gate. |
+
+The final hosted v0.1.1 asset, full-game/persistence and older-disk upgrade
+records are retained as `hosted-assets-v011.json`, `hosted-full-v011.json` and
+`hosted-upgrade-v011.json`. They prove the published result rather than a local
+preview. Keep them as bounded, versioned development evidence with spoiler context.

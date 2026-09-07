@@ -79,8 +79,8 @@ such samples for future comparisons.
 
 The upstream COM release and the browser site's deployment are separate outcomes.
 Triptych consumes an exact hash and provenance record; tests of a sibling checkout
-do not prove what a player downloads. Hosted progression, save/reload and fresh-session
-export/import remain acceptance work at this snapshot. For HyperDrive, schedule
+do not prove what a player downloads. The [v0.1.1 hosted proof](evidence/hosted-full-v011.json) completed progression,
+save/reload and fresh-session export/import against verified downloaded bytes. For HyperDrive, schedule
 those checks as delivery work and supply the playable website link explicitly.
 Preserve existing user disks through the consumer's explicit update flow.
 
@@ -89,3 +89,9 @@ restart/exit after death must not return into a dead command, while cancelling
 QUIT must resume the existing adventure. Version 0.1.1 stores that permission
 on the prompt activation and tests both paths with exact waiting stack and
 state comparisons. A global cancellation flag could leak across those contexts.
+
+The final hosted upgrade proof reopened an older disk byte-for-byte before an
+explicit game update, preserved seven unrelated files and system tracks, then
+loaded its existing save. Keep that preservation proof separate from a fresh
+image test: both matter to a player who already has a saved adventure. The
+maintained owner browser tool now reproduces the complete hosted sequence.

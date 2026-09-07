@@ -5,7 +5,7 @@
 
 Copyright 1982–83 John Hardy. This report assesses the original
 [M1–M3 roadmap](../plans/cpm-roadmap.md), including the public browser delivery.
-Version 0.1.1 is the final game artifact under qualification. Its upstream source
+Version 0.1.1 passed final hosted qualification on 8 September 2026. Its upstream source
 is `0a0a67fda6163fdad982be7d5d20031d2b151c4d`; its 22,896-byte `CAVERNS.COM`
 has SHA-256 `6e4c4154d7136645c18effccfc5d60ca3d59ae7b19a963b389608ecaf18e2dfb`.
 Later test and documentation commits do not alter that executable.
@@ -28,17 +28,23 @@ Later test and documentation commits do not alter that executable.
 | M2: proposed playability dispositions | [Design dispositions](../design/cpm-game.md#release-disposition-of-playability-proposals), [coverage](coverage.md) | Required implemented behavior is distinguished from optional hints, broader parser work and first-player balance feedback. No claim of universal enjoyment or every possible puzzle order is made. |
 | M3: identified upstream artifact | [Release v0.1.1](https://github.com/jhlagado/caverns80/releases/tag/v0.1.1), [owner CI](https://github.com/jhlagado/caverns80/actions/runs/34144753343) | Downloaded published COM and manifest match the Linux CI artifact exactly. Licence and player guide accompany the release. |
 | M3: exact consumer pin and full checks | [Triptych PR 6](https://github.com/jhlagado/triptych/pull/6), [consumer CI](https://github.com/jhlagado/triptych/actions/runs/34145233295) | Full local checks and Linux release/browser tests pass. Merged consumer revision is `54bc6385f846233fc6430d9bd655857dd6ba86fd`. |
-| M3: fresh images and existing media | Consumer distribution/profile tests; local upgrade proof | Exact game records are installed in fresh supported images. Local reopening preserved every old disk byte; explicit update preserved system tracks, other files and the old save. Final hosted repetition remains pending below. |
-| M3: actual hosted full progression and persistence | [First hosted full route](evidence/hosted-full-v010.json), [first hosted transfer](evidence/hosted-transfer-v010.json), [first hosted assets](evidence/hosted-assets-v010.json) | Version 0.1.0 is publicly verified. Repeat with the final 0.1.1 deployment before closing M3. |
+| M3: fresh images and existing media | Consumer distribution/profile tests; [hosted upgrade](evidence/hosted-upgrade-v011.json) | Exact game records are installed in fresh supported images. Hosted reopening preserved every old disk byte; explicit update preserved system tracks, other files and the old save. |
+| M3: actual hosted full progression and persistence | [Final hosted full route and transfer](evidence/hosted-full-v011.json), [final hosted assets](evidence/hosted-assets-v011.json) | Version 0.1.1 completes all 147 commands for 126 points, saves, reloads, exports and reimports into a fresh context, then continues with the same winning score. |
 | Future HyperDrive preparation | [Reusable lessons](reusable-lessons.md) | Engineering/gameplay/test lessons retained for Ken Stone's HyperDrive; no HyperDrive implementation included. |
 
-## Remaining release gate
+## Final release result
 
 The [0.1.1 deployment](https://github.com/jhlagado/triptych/actions/runs/34146693090)
-is running. Completion requires downloading the final hosted assets, repeating
-full progression and save/reload/export/reimport, and explicitly upgrading the
-older saved disk on that site. The playable URL is
-[Triptych](https://jhlagado.github.io/triptych/); type `CAVERNS` at the CP/M prompt.
+completed successfully. The maintained [browser verifier](../../tools/prove-browser.mjs)
+then passed against the actual public site, including the optional older-disk
+upgrade. The archived records identify consumer revision, exact COM, browser,
+reference host and measured command times. The original M1–M3 delivery gates
+are satisfied by the evidence above.
+
+[Play Caverns in Triptych](https://jhlagado.github.io/triptych/): type `CAVERNS`
+at the CP/M prompt. Existing saved disks can install or update the game through
+Files and recovery, with an explicit backup. The next useful step is John's
+playthrough and feedback; HyperDrive remains a separate future project.
 
 Power-loss atomicity, physical ESP32 timing and every possible random history
 are outside these measured proofs. They are not silently claimed by passing

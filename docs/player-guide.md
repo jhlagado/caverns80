@@ -1,5 +1,9 @@
 # Caverns: player guide
 
+[Play in the Triptych browser terminal](https://jhlagado.github.io/triptych/).
+Type `CAVERNS` at the `A>` prompt.
+
+
 Copyright 1982–83 John Hardy. John began Caverns on the ZX81 in 1982 and
 released the Microbee version in 1983. Caverns80 continues his adventure with
 revised gameplay for CP/M.

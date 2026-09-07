@@ -6,6 +6,12 @@ the Microbee version was released in 1983.
 Z80 assembly port of the 1983 MicroWorld BASIC program in `docs/basic/caverns.mwb`
 and related references.
 
+[Play Caverns in the Triptych browser terminal](https://jhlagado.github.io/triptych/).
+Click the terminal and type `CAVERNS` at the `A>` prompt. If an existing saved
+disk lacks the game, use **Files and recovery** to stage the Caverns update,
+then apply it. Save and exit any running program first; the update preserves a
+disk backup.
+
 [Read the spoiler-free player guide](docs/player-guide.md) for the story, commands,
 and disk-save instructions.
 
@@ -64,12 +70,12 @@ for the complete CP/M WASM-host route on a private disk.
 
 ## Goal
 
-Complete the revised Caverns80 adventure for CP/M and deliver it in Triptych's
-WebAssembly browser system. John Hardy's intentional Caverns80 gameplay changes
+The revised Caverns80 adventure is delivered in Triptych's WebAssembly CP/M
+system. John Hardy's intentional Caverns80 gameplay changes
 are canonical; the recovered BASIC is a reference for unfinished content.
-The current implementation completes a 126-point adventure in automated native
-and WASM CP/M checks. Release integration and published-browser qualification
-are tracked separately in the implementation report.
+Version 0.1.1 completes a 126-point adventure in native, WASM and actual hosted
+browser checks. Save/reload, disk export/reimport and explicit upgrades of older
+saved disks are verified. The delivery report retains exact release identities.
 
 **Spoiler warning:** The source, automated full-game routes, and development
 documents below reveal locations, puzzle solutions, and ways to complete the
@@ -79,7 +85,10 @@ who want to discover the game should avoid them until after playing.
 The September 2026 documentation package contains:
 
 - [Current implementation and gameplay baseline](docs/reports/cpm-baseline.md)
-- [Proposed CP/M architecture](docs/design/cpm-game.md)
+- [CP/M architecture and implemented decisions](docs/design/cpm-game.md)
 - [Delivery milestones and browser acceptance](docs/plans/cpm-roadmap.md)
 
 - [Assembly module guide (spoilers)](docs/design/source-modules.md)
+
+- [Repeatable browser verification (spoilers)](docs/reports/browser-verification.md)
+- [Delivery acceptance evidence (spoilers)](docs/reports/delivery-acceptance.md)

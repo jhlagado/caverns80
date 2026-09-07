@@ -30,7 +30,7 @@ responses stay at the same prompt without accumulating stack entries.
 
 ## Evidence and limits
 
-The current 57-test suite exercises full progression, nested output, paging,
+The current 58-test suite exercises full progression, nested output, paging,
 save/load, all implemented terminal branches and repeated restarts. The earlier v0.1.0
 Triptych A/B lifetime proof additionally traces application SP instruction by
 instruction during startup, paging, inventory and exit. The observed minimum
@@ -47,3 +47,8 @@ They were not CP/M requirements.
 This qualifies the declared Z80 CP/M target. It does not claim that a Z80 binary
 runs on an 8080-only machine, or that its memory requirement fits every historical
 CP/M installation. The release manifest states the required allocation.
+
+The v0.1.1 [A/B lifetime record](evidence/ab-stack-v011.json) observes minimum
+application SP 5A3Eh, 50 bytes below the current 5A70h stack top, during startup,
+paging, inventory and quit. It observes BDOS function 0 and resident reload on
+drive B. This is a scenario maximum, not an all-path stack bound.

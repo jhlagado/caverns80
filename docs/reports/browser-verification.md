@@ -49,7 +49,10 @@ all other user-0 files and system tracks, loads the old save and exercises
 voluntary cancellation. It records those bounded results separately from the
 fresh full-game proof.
 
-This tool consolidates previously executed workspace proofs. The consolidated
-owner tool passed locally against 0.1.1, including the supplied v0.1.0 saved-disk
-upgrade. Its hosted acceptance result must be recorded after deployment. Neither its presence nor the earlier scripts'
-results certify a new deployment automatically.
+The consolidated owner tool passed against the published v0.1.1 site at
+Triptych revision `54bc6385f846233fc6430d9bd655857dd6ba86fd`. Retained records
+cover [asset identity](evidence/hosted-assets-v011.json),
+[full gameplay and transfer](evidence/hosted-full-v011.json) and
+[old-media preservation and upgrade](evidence/hosted-upgrade-v011.json).
+The run used Chromium 151.0.7922.34 on an Apple M2 running Darwin 25.5.0.
+Subsequent deployments require a new run matched to their own artifact hash.

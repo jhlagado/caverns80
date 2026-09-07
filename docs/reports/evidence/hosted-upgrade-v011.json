@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "url": "https://jhlagado.github.io/triptych/",
+  "observedAt": "2026-09-07T17:37:29.646Z",
+  "comSha256": "6e4c4154d7136645c18effccfc5d60ca3d59ae7b19a963b389608ecaf18e2dfb",
+  "reopenedByteExact": true,
+  "oldDiskSha256": "c26990bb1ea28661f3767f34e276e26e864a0fd4aeb3c5e626933c2b6537d7b0",
+  "updatedDiskSha256": "ffd5268d264a72435587405a3bedb2fe6478e5267e0fd4e26fcd5267afad2960",
+  "preservedFiles": [
+    "ATOM.COM",
+    "NUC.COM",
+    "EDIT.COM",
+    "HELLO.ASM",
+    "INPUT.NU",
+    "LARGE.ASM",
+    "BROWSER.SAV"
+  ],
+  "systemTracksPreserved": true,
+  "oldSaveLoaded": true,
+  "cancellationResumed": true,
+  "dialogs": [
+    "CAVERNS.COM differs from this release. It may be another valid version. Replace it with the verified release?",
+    "Replace CAVERNS.COM? A full-disk backup is created when you apply."
+  ]
+}

@@ -57,17 +57,18 @@ async function fresh(){const context=await browser.newContext({viewport:{width:1
 try{
  const p=await fresh();await command(p,'CAVERNS');assert(pages>=2);
  const samples=[];for(const cmd of route)samples.push(await command(p,cmd));
- assert.match(await text(p),/quest is complete/);await command(p,'SCORE');assert.match(await text(p),/126/);
- await command(p,'SAVE WEBWIN');assert.match(await text(p),/Game saved/);await quit(p);
- await p.reload();await until(p,'A>');await command(p,'CAVERNS');await command(p,'LOAD WEBWIN');assert.match(await text(p),/Game loaded/);
- await command(p,'SCORE');assert.match(await text(p),/126/);await quit(p);
+ assert.match(await text(p),/quest is complete/);await command(p,'SCORE');assert.match(await text(p),/You have a score of 126/);
+ const helpTiming=await command(p,'HELP');
+ const saveTiming=await command(p,'SAVE WEBWIN');assert.match(await text(p),/Game saved/);await quit(p);
+ await p.reload();await until(p,'A>');await command(p,'CAVERNS');const loadTiming=await command(p,'LOAD WEBWIN');assert.match(await text(p),/Game loaded/);
+ await command(p,'SCORE');assert.match(await text(p),/You have a score of 126/);await quit(p);
  const savedDisk=await download(p,'winning-save.img');
  const other=await fresh();await importDisk(other,join(out,'winning-save.img'));
  await command(other,'CAVERNS');await command(other,'LOAD WEBWIN');assert.match(await text(other),/Game loaded/);
- await command(other,'LOOK');await command(other,'SCORE');assert.match(await text(other),/126/);
+ await command(other,'LOOK');await command(other,'SCORE');assert.match(await text(other),/You have a score of 126/);
  await other.screenshot({path:join(out,'reimported-win.png'),fullPage:true});
  const sorted=samples.map(s=>s.elapsedMs).sort((a,b)=>a-b);
- const report={status:'passed',url,observedAt:new Date().toISOString(),version:manifest.version,comSha256:manifest.sha256,distribution:catalog.distribution,browserVersion:browser.version(),host:{platform:os.platform(),release:os.release(),arch:os.arch(),cpu:os.cpus()[0]?.model},commands:samples.length,score:126,pages,reload:true,reimportFreshContext:true,continuedAfterImport:true,diskSha256:sha(savedDisk),method:'Enter dispatch to complete observed prompt, including Playwright observation overhead. Human typing/page pauses excluded from ordinary-command samples.',p95Ms:sorted[Math.ceil(sorted.length*.95)-1],maxMs:sorted.at(-1),samples};
+ const report={status:'passed',url,observedAt:new Date().toISOString(),version:manifest.version,comSha256:manifest.sha256,distribution:catalog.distribution,browserVersion:browser.version(),host:{platform:os.platform(),release:os.release(),arch:os.arch(),cpu:os.cpus()[0]?.model},commands:samples.length,score:126,pages,auxiliaryTimings:{help:helpTiming,save:saveTiming,load:loadTiming},reload:true,reimportFreshContext:true,continuedAfterImport:true,diskSha256:sha(savedDisk),method:'Enter dispatch to complete observed prompt, including Playwright observation overhead. Human typing/page pauses excluded from ordinary-command samples.',p95Ms:sorted[Math.ceil(sorted.length*.95)-1],maxMs:sorted.at(-1),samples};
  await save('full-game.json',report);
  if(process.env.CAVERNS_OLD_DISK){
   const oldPath=resolve(process.env.CAVERNS_OLD_DISK),old=await readFile(oldPath),u=await fresh();

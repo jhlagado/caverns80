@@ -1,0 +1,633 @@
+{
+  "status": "passed",
+  "url": "https://jhlagado.github.io/triptych/",
+  "observedAt": "2026-09-07T17:37:28.495Z",
+  "version": "0.1.1",
+  "comSha256": "6e4c4154d7136645c18effccfc5d60ca3d59ae7b19a963b389608ecaf18e2dfb",
+  "distribution": {
+    "revision": "54bc6385f846233fc6430d9bd655857dd6ba86fd",
+    "lockSha256": "04b7b3342e17901be3fb25a62e94fe47a2139be5a85e070613ae33225e68f0c5",
+    "diskSha256": "d224ffd7ae0b3ef888911bcb5784ea5595ce18625869730831478809c74b2a84"
+  },
+  "browserVersion": "151.0.7922.34",
+  "host": {
+    "platform": "darwin",
+    "release": "25.5.0",
+    "arch": "arm64",
+    "cpu": "Apple M2"
+  },
+  "commands": 147,
+  "score": 126,
+  "pages": 16,
+  "auxiliaryTimings": {
+    "help": {
+      "command": "HELP",
+      "elapsedMs": 84.47229200000038
+    },
+    "save": {
+      "command": "SAVE WEBWIN",
+      "elapsedMs": 18.43949999999859
+    },
+    "load": {
+      "command": "LOAD WEBWIN",
+      "elapsedMs": 17.382958000000144
+    }
+  },
+  "reload": true,
+  "reimportFreshContext": true,
+  "continuedAfterImport": true,
+  "diskSha256": "9de2c09175c57a0c938c700743a1c1635ccab8942c0c49aaa374e4c3d714c967",
+  "method": "Enter dispatch to complete observed prompt, including Playwright observation overhead. Human typing/page pauses excluded from ordinary-command samples.",
+  "p95Ms": 17.930208000000675,
+  "maxMs": 18.830207999999402,
+  "samples": [
+    {
+      "command": "get compass",
+      "elapsedMs": 17.742667000000438
+    },
+    {
+      "command": "north",
+      "elapsedMs": 17.686791999999514
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.801666999999725
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.777208000000428
+    },
+    {
+      "command": "south",
+      "elapsedMs": 17.87879199999952
+    },
+    {
+      "command": "east",
+      "elapsedMs": 17.642375000000357
+    },
+    {
+      "command": "get coin",
+      "elapsedMs": 17.395166999999674
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.562333000000763
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.62445800000023
+    },
+    {
+      "command": "get sword",
+      "elapsedMs": 17.73424999999952
+    },
+    {
+      "command": "east",
+      "elapsedMs": 17.669291000000158
+    },
+    {
+      "command": "north",
+      "elapsedMs": 17.90862500000003
+    },
+    {
+      "command": "east",
+      "elapsedMs": 17.514458999999988
+    },
+    {
+      "command": "east",
+      "elapsedMs": 17.533417000000554
+    },
+    {
+      "command": "east",
+      "elapsedMs": 17.384000000000015
+    },
+    {
+      "command": "east",
+      "elapsedMs": 17.626667000000452
+    },
+    {
+      "command": "south",
+      "elapsedMs": 17.53662499999973
+    },
+    {
+      "command": "kill troll with sword",
+      "elapsedMs": 17.40416599999935
+    },
+    {
+      "command": "south",
+      "elapsedMs": 17.31458399999974
+    },
+    {
+      "command": "south",
+      "elapsedMs": 17.14616600000045
+    },
+    {
+      "command": "east",
+      "elapsedMs": 17.178291000000172
+    },
+    {
+      "command": "get rope",
+      "elapsedMs": 18.68395800000053
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.459624999999505
+    },
+    {
+      "command": "west",
+      "elapsedMs": 16.708834000000024
+    },
+    {
+      "command": "south",
+      "elapsedMs": 17.45024999999987
+    },
+    {
+      "command": "kill dragon with sword",
+      "elapsedMs": 17.90337499999987
+    },
+    {
+      "command": "south",
+      "elapsedMs": 18.830207999999402
+    },
+    {
+      "command": "south",
+      "elapsedMs": 17.477125000000342
+    },
+    {
+      "command": "get candle",
+      "elapsedMs": 17.47887499999979
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.405625000000327
+    },
+    {
+      "command": "north",
+      "elapsedMs": 17.930208000000675
+    },
+    {
+      "command": "get diamond",
+      "elapsedMs": 17.603499999999258
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.49604199999976
+    },
+    {
+      "command": "south",
+      "elapsedMs": 15.670916999999463
+    },
+    {
+      "command": "south",
+      "elapsedMs": 17.884916999999405
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.80529200000001
+    },
+    {
+      "command": "south",
+      "elapsedMs": 17.433750000000146
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.2529999999997
+    },
+    {
+      "command": "get key",
+      "elapsedMs": 17.56670799999938
+    },
+    {
+      "command": "east",
+      "elapsedMs": 18.230375000000095
+    },
+    {
+      "command": "south",
+      "elapsedMs": 17.61066699999992
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.25629200000003
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.284708000000137
+    },
+    {
+      "command": "south",
+      "elapsedMs": 17.21929199999977
+    },
+    {
+      "command": "east",
+      "elapsedMs": 17.354959000000235
+    },
+    {
+      "command": "south",
+      "elapsedMs": 17.69262500000059
+    },
+    {
+      "command": "east",
+      "elapsedMs": 17.07008399999995
+    },
+    {
+      "command": "down with rope",
+      "elapsedMs": 17.162124999999833
+    },
+    {
+      "command": "open gate with key",
+      "elapsedMs": 17.871791999999914
+    },
+    {
+      "command": "read",
+      "elapsedMs": 17.673208999999588
+    },
+    {
+      "command": "vard",
+      "elapsedMs": 17.469874999999774
+    },
+    {
+      "command": "east",
+      "elapsedMs": 17.442124999999578
+    },
+    {
+      "command": "get grill",
+      "elapsedMs": 17.525250000000597
+    },
+    {
+      "command": "drop grill",
+      "elapsedMs": 17.291707999999744
+    },
+    {
+      "command": "east",
+      "elapsedMs": 17.429041000000325
+    },
+    {
+      "command": "south",
+      "elapsedMs": 17.1704579999996
+    },
+    {
+      "command": "kill wizard with sword",
+      "elapsedMs": 18.65887499999917
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.46545800000058
+    },
+    {
+      "command": "get sword",
+      "elapsedMs": 17.698083000000224
+    },
+    {
+      "command": "open gate with key",
+      "elapsedMs": 17.567207999999482
+    },
+    {
+      "command": "east",
+      "elapsedMs": 17.310749999999643
+    },
+    {
+      "command": "east",
+      "elapsedMs": 17.39441699999952
+    },
+    {
+      "command": "south",
+      "elapsedMs": 17.534417000000758
+    },
+    {
+      "command": "east",
+      "elapsedMs": 17.29820800000016
+    },
+    {
+      "command": "north",
+      "elapsedMs": 18.8226250000007
+    },
+    {
+      "command": "get ruby",
+      "elapsedMs": 17.34008300000005
+    },
+    {
+      "command": "south",
+      "elapsedMs": 17.48949999999968
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.33008299999983
+    },
+    {
+      "command": "north",
+      "elapsedMs": 17.71545900000001
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.419832999999926
+    },
+    {
+      "command": "north",
+      "elapsedMs": 17.246125000000575
+    },
+    {
+      "command": "north",
+      "elapsedMs": 17.345750000000407
+    },
+    {
+      "command": "get pearl",
+      "elapsedMs": 17.570999999999913
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.294584000000214
+    },
+    {
+      "command": "kill goblin with sword",
+      "elapsedMs": 17.356458000000202
+    },
+    {
+      "command": "kill goblin with sword",
+      "elapsedMs": 17.38299999999981
+    },
+    {
+      "command": "south",
+      "elapsedMs": 17.47691599999962
+    },
+    {
+      "command": "south",
+      "elapsedMs": 15.238207999999759
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.19487500000014
+    },
+    {
+      "command": "north",
+      "elapsedMs": 17.713041999999405
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.751333999999588
+    },
+    {
+      "command": "north",
+      "elapsedMs": 17.37720900000022
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.161166999999296
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.383958999999777
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.43541600000026
+    },
+    {
+      "command": "get stone",
+      "elapsedMs": 17.84045900000001
+    },
+    {
+      "command": "south",
+      "elapsedMs": 17.227582999999868
+    },
+    {
+      "command": "east",
+      "elapsedMs": 17.204334000000017
+    },
+    {
+      "command": "north",
+      "elapsedMs": 17.43591600000036
+    },
+    {
+      "command": "read",
+      "elapsedMs": 17.43945900000017
+    },
+    {
+      "command": "east",
+      "elapsedMs": 17.21312499999931
+    },
+    {
+      "command": "get bomb",
+      "elapsedMs": 17.601082999999562
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.426040999999714
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.50920799999949
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.536917000000358
+    },
+    {
+      "command": "galar",
+      "elapsedMs": 17.438499999999294
+    },
+    {
+      "command": "north",
+      "elapsedMs": 17.605790999999954
+    },
+    {
+      "command": "north",
+      "elapsedMs": 17.563334000000395
+    },
+    {
+      "command": "east",
+      "elapsedMs": 17.660208999999668
+    },
+    {
+      "command": "north",
+      "elapsedMs": 17.166457999999693
+    },
+    {
+      "command": "north",
+      "elapsedMs": 17.512499999999818
+    },
+    {
+      "command": "north",
+      "elapsedMs": 17.29291699999976
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.21374999999989
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.50866700000006
+    },
+    {
+      "command": "open door with key",
+      "elapsedMs": 17.53729199999998
+    },
+    {
+      "command": "drop coin",
+      "elapsedMs": 17.471959000000425
+    },
+    {
+      "command": "drop compass",
+      "elapsedMs": 17.51366700000017
+    },
+    {
+      "command": "drop ruby",
+      "elapsedMs": 17.538292000000183
+    },
+    {
+      "command": "drop diamond",
+      "elapsedMs": 17.952832999999373
+    },
+    {
+      "command": "drop pearl",
+      "elapsedMs": 17.561625000000276
+    },
+    {
+      "command": "drop stone",
+      "elapsedMs": 17.262792000000445
+    },
+    {
+      "command": "north",
+      "elapsedMs": 17.520416000000296
+    },
+    {
+      "command": "east",
+      "elapsedMs": 17.351290999999947
+    },
+    {
+      "command": "east",
+      "elapsedMs": 17.318874999999935
+    },
+    {
+      "command": "south",
+      "elapsedMs": 17.42041700000027
+    },
+    {
+      "command": "south",
+      "elapsedMs": 17.236791999999696
+    },
+    {
+      "command": "south",
+      "elapsedMs": 17.5610829999996
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.675916999999572
+    },
+    {
+      "command": "south",
+      "elapsedMs": 17.561291999999412
+    },
+    {
+      "command": "south",
+      "elapsedMs": 17.231791000000158
+    },
+    {
+      "command": "south",
+      "elapsedMs": 17.418291999999383
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.621165999999903
+    },
+    {
+      "command": "north",
+      "elapsedMs": 17.29908399999931
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.44562500000029
+    },
+    {
+      "command": "north",
+      "elapsedMs": 17.449624999999287
+    },
+    {
+      "command": "light bomb with candle",
+      "elapsedMs": 17.36029199999939
+    },
+    {
+      "command": "east",
+      "elapsedMs": 17.466875000000073
+    },
+    {
+      "command": "kill demon with sword",
+      "elapsedMs": 18.3068749999984
+    },
+    {
+      "command": "get ring",
+      "elapsedMs": 17.324208
+    },
+    {
+      "command": "get pendant",
+      "elapsedMs": 17.27349999999933
+    },
+    {
+      "command": "get grail",
+      "elapsedMs": 17.243125000000873
+    },
+    {
+      "command": "get shield",
+      "elapsedMs": 17.4424999999992
+    },
+    {
+      "command": "galar",
+      "elapsedMs": 17.526750000000902
+    },
+    {
+      "command": "north",
+      "elapsedMs": 17.561750000000757
+    },
+    {
+      "command": "north",
+      "elapsedMs": 17.445292000000336
+    },
+    {
+      "command": "east",
+      "elapsedMs": 17.132332999999562
+    },
+    {
+      "command": "north",
+      "elapsedMs": 17.499499999999898
+    },
+    {
+      "command": "north",
+      "elapsedMs": 17.615167000001748
+    },
+    {
+      "command": "north",
+      "elapsedMs": 17.277500000000146
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.2950409999994
+    },
+    {
+      "command": "west",
+      "elapsedMs": 17.57641700000022
+    },
+    {
+      "command": "open door with key",
+      "elapsedMs": 17.331874999999854
+    },
+    {
+      "command": "drop ring",
+      "elapsedMs": 17.563374999999724
+    },
+    {
+      "command": "drop pendant",
+      "elapsedMs": 17.09966700000041
+    },
+    {
+      "command": "drop grail",
+      "elapsedMs": 17.453707999999097
+    },
+    {
+      "command": "drop shield",
+      "elapsedMs": 17.57983299999978
+    },
+    {
+      "command": "score",
+      "elapsedMs": 17.589958999999
+    }
+  ]
+}

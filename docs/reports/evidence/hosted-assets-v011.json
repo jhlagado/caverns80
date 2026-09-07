@@ -1,0 +1,36 @@
+{
+  "status": "passed",
+  "url": "https://jhlagado.github.io/triptych/",
+  "observedAt": "2026-09-07T17:37:19.224Z",
+  "version": "0.1.1",
+  "distribution": {
+    "revision": "54bc6385f846233fc6430d9bd655857dd6ba86fd",
+    "lockSha256": "04b7b3342e17901be3fb25a62e94fe47a2139be5a85e070613ae33225e68f0c5",
+    "diskSha256": "d224ffd7ae0b3ef888911bcb5784ea5595ce18625869730831478809c74b2a84"
+  },
+  "game": {
+    "id": "caverns80",
+    "name": "CAVERNS.COM",
+    "source": {
+      "kind": "git",
+      "repository": "https://github.com/jhlagado/caverns80.git",
+      "revision": "0a0a67fda6163fdad982be7d5d20031d2b151c4d",
+      "path": "src/main.asm"
+    },
+    "target": {
+      "origin": 256,
+      "capacity": 58112
+    },
+    "raw": {
+      "bytes": 22896,
+      "sha256": "6e4c4154d7136645c18effccfc5d60ca3d59ae7b19a963b389608ecaf18e2dfb"
+    },
+    "padded": {
+      "bytes": 22912,
+      "sha256": "86cb51190599c1ce8b5bba8a766f109bd40b8be4a56fbda950e61207bc01ad50"
+    },
+    "padByte": 26,
+    "asset": "tool-caverns80-86cb51190599c1ce8b5bba8a766f109bd40b8be4a56fbda950e61207bc01ad50.com"
+  },
+  "diskSha256": "d224ffd7ae0b3ef888911bcb5784ea5595ce18625869730831478809c74b2a84"
+}

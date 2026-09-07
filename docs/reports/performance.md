@@ -64,13 +64,8 @@ winning route, page reload and restoration of the winning save. Its measured
 95th-percentile Enter-to-observed-prompt time was 18.74 ms, maximum 26.22 ms.
 This includes Playwright observation overhead on the local macOS host and is
 not a guarantee for other machines. Human typing and story-page pauses are
-excluded from those command samples. Hosted measurements remain outstanding.
-
-The upstream v0.1.0 release contains this measured COM. Triptych at `a6a63d7`
-has passed its full local checks; Linux CI passed and hosted deployment remains pending
-at this snapshot. The hosted timing record must identify the browser version,
-reference host, consumer revision and executable hash before the proposed
-p95 response target can be assessed for that environment.
+excluded from those command samples. This historical record precedes the
+v0.1.1 hosted measurements below.
 
 ## Version 0.1.1 qualification
 
@@ -85,7 +80,7 @@ cycles across the 147-command route. HELP now costs 2,790,364 cycles and emits
 4,894 bytes, an increase of 29,416 cycles and 53 bytes over v0.1.0. The extra
 help explains cancellation. These measurements use the same exclusions as the
 prior CPU measurements; the earlier 18.74 ms browser result remains v0.1.0
-only. Final v0.1.1 hosted timing and artifact checks are outstanding.
+only. The v0.1.1 hosted measurements below identify their own environment.
 
 ## Automated CPU regression limits
 
@@ -99,3 +94,25 @@ The separate v0.1.1 save/load samples are 309,832 and 462,506 guest cycles.
 [Raw samples](evidence/command-costs-v011.json) identify the executable and
 include the full route. BDOS adapter time, physical storage and rendering are
 excluded. Hosted persistence tests cover the actual browser path separately.
+
+## Published v0.1.1 browser result
+
+The [hosted full-game proof](evidence/hosted-full-v011.json) ran against
+Triptych `54bc6385f846233fc6430d9bd655857dd6ba86fd` on Chromium 151.0.7922.34,
+Apple M2, arm64 Darwin 25.5.0. Across 147 route commands, Enter-to-completed-prompt
+p95 was **17.930 ms**, maximum **18.830 ms**. This meets the proposed p95 under
+100 ms target on that reference host. The samples include Playwright observation
+overhead and exclude human typing and page-reading pauses.
+
+The same run completed the 126-point adventure, saved, reloaded the page,
+exported/reimported the disk in a fresh context and continued. Artifact checks
+matched the release hash. One reference-host run does not guarantee latency on
+other devices or establish a speedup over the differently situated local sample.
+
+The same hosted run separately measured HELP at **84.472 ms**, SAVE at
+**18.440 ms** and LOAD at **17.383 ms**. HELP includes automated pager
+advancement; these auxiliary commands are excluded from the 147-command warm
+route distribution. Sixteen page continuations occurred across startup, reload,
+reimport and HELP. The record was observed at 2026-09-07 17:37:28.495 UTC.
+These are automated browser observations, including scheduling and observation
+overhead, not physical terminal or disk performance guarantees.
