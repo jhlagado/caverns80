@@ -31,7 +31,7 @@ can reproduce the same encounter.
 
 ## Measured implementation lessons
 
-The [native ATOM release](implementation-status.md) occupies 22,726 bytes,
+The [v0.1.1 native ATOM release](implementation-status.md) occupies 22,896 bytes,
 including its private 512-byte stack. CP/M entry at 0100h and BDOS function 0
 termination work without retaining a foreign runtime's stack convention.
 Keep the entire allocation in the manifest: checking only code size would omit
@@ -69,7 +69,7 @@ not proof that input is ready.
 
 The [release measurements](performance.md) record 397,268 guest cycles at the
 95th percentile for ordinary route commands, and 18.74 ms Enter-to-observed-prompt
-p95 in one local Chromium run. Those measure different costs. Guest cycles exclude
+p95 in one local Chromium v0.1.0 run. Those measure different costs. Guest cycles exclude
 BDOS and rendering; browser observations include automation overhead. Pagination
 increased guest work, so the report retains the regression rather than presenting
 all refactoring as a speedup. Record host and artifact identities before using
@@ -83,3 +83,9 @@ do not prove what a player downloads. Hosted progression, save/reload and fresh-
 export/import remain acceptance work at this snapshot. For HyperDrive, schedule
 those checks as delivery work and supply the playable website link explicitly.
 Preserve existing user disks through the consumer's explicit update flow.
+
+Voluntary cancellation illustrates why terminal paths need separate contracts:
+restart/exit after death must not return into a dead command, while cancelling
+QUIT must resume the existing adventure. Version 0.1.1 stores that permission
+on the prompt activation and tests both paths with exact waiting stack and
+state comparisons. A global cancellation flag could leak across those contexts.

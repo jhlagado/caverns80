@@ -32,7 +32,7 @@ a current-build baseline, not evidence of an improvement over an unmeasured
 older implementation. The figures above remain a historical CPU baseline.
 The paginated release measurements and their archived raw samples appear below.
 
-## Current paginated build and local browser
+## Version 0.1.0 paginated build and local browser
 
 Revision `c2926e2be370e574b80666ecbe6db5c459674fa5` produces 22,726 bytes,
 SHA-256 `662445028d6c55d58f5497032853803d181e128082ed1f1264db1e010cd162e3`.
@@ -50,9 +50,9 @@ reference-machine configuration, so retain that configuration with release
 measurements before using this as a cross-machine comparison. No CPU-cycle
 speedup follows from comparing these wall times with the historical CPU table.
 
-## Paginated release measurements
+## Version 0.1.0 release measurements
 
-The current release's [raw CPU samples](evidence/command-costs.json) record
+The v0.1.0 release's [raw CPU samples](evidence/command-costs.json) record
 210,030 median, 397,268 95th-percentile and 466,871 maximum cycles across the
 147-command winning route. HELP costs 2,760,948 emulated game cycles and emits
 4,841 bytes, including pager prompts and erasure. These counts exclude waiting
@@ -71,3 +71,31 @@ has passed its full local checks; Linux CI passed and hosted deployment remains 
 at this snapshot. The hosted timing record must identify the browser version,
 reference host, consumer revision and executable hash before the proposed
 p95 response target can be assessed for that environment.
+
+## Version 0.1.1 qualification
+
+Release source `0a0a67fda6163fdad982be7d5d20031d2b151c4d` produces 22,896 bytes,
+SHA-256 `6e4c4154d7136645c18effccfc5d60ca3d59ae7b19a963b389608ecaf18e2dfb`.
+The allocation ends at 5A70h exclusive, with a 512-byte stack at 5870h–5A70h.
+The 170-byte increase adds voluntary cancellation, its explanation and the
+room-17 READ path.
+
+Fresh measurements retain 210,030 median, 397,268 p95 and 466,871 maximum guest
+cycles across the 147-command route. HELP now costs 2,790,364 cycles and emits
+4,894 bytes, an increase of 29,416 cycles and 53 bytes over v0.1.0. The extra
+help explains cancellation. These measurements use the same exclusions as the
+prior CPU measurements; the earlier 18.74 ms browser result remains v0.1.0
+only. Final v0.1.1 hosted timing and artifact checks are outstanding.
+
+## Automated CPU regression limits
+
+`test/performance.test.mjs` executes the complete route and asserts guest-cycle
+limits: route p95 500,000, maximum 600,000, HELP 3,500,000, SAVE 400,000 and
+LOAD 600,000. These leave roughly 20–30% margin over the qualified v0.1.1
+baseline and run in the normal test suite. They detect substantial regressions;
+they are not claims about disk or terminal latency.
+
+The separate v0.1.1 save/load samples are 309,832 and 462,506 guest cycles.
+[Raw samples](evidence/command-costs-v011.json) identify the executable and
+include the full route. BDOS adapter time, physical storage and rendering are
+excluded. Hosted persistence tests cover the actual browser path separately.

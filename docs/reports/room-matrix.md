@@ -67,7 +67,7 @@ From the hut, GALAR reaches16; EAST enters17. LOOK exposes the Sacred Key inscri
 
 ## Puzzle and clue coverage
 
-The fresh route covers the key, rope descent, crypt READ/VARD, grille removal, waterfall return, castle READ/GALAR, bomb door, sword recovery, combat and treasure banking. The added tour covers the bat displacement and observes the dead-end key inscription through LOOK. At the time of this test, READ at17 returned “Nothing happens”; this inconsistency was reported separately and is not concealed by claiming READ coverage.
+The fresh route covers the key, rope descent, crypt READ/VARD, grille removal, waterfall return, castle READ/GALAR, bomb door, sword recovery, combat and treasure banking. The added tour covers the bat displacement and observes the dead-end key inscription through LOOK. The initial tour used LOOK because READ at17 returned “Nothing happens”. Version 0.1.1 fixes READ to show the same inscription; [cancel-read.test.mjs](../../test/cancel-read.test.mjs) verifies its text and unchanged state/stack.
 
 ## Limits
 
