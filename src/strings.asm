@@ -99,7 +99,7 @@ STORYTXT:
         DB "Suddenly, to the surprise of all around, the elves began to die as if "
         DB "of some strange illness. Nothing could be done to save them and within "
         DB "a few weeks all of the elves were dead and their wonderful gifts lost "
-        DB "forever. The King was furious and executed several of his courtesans, "
+        DB "forever. The King was furious and executed several of his courtiers, "
         DB "but the damage had already been done.",13,10,13,10
         DB "Centuries passed and the story of Svartalfheim faded from memory until "
         DB "one day a goatherd called Peter ran into town with an incredible "

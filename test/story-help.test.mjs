@@ -13,7 +13,7 @@ const episodes=[
  'Royal Palace to work in the foundry',
  'all the inhabitants of Svartalfheim were forced to live within the city walls',
  'all of the elves were dead and their wonderful gifts lost forever',
- 'executed several of his courtesans',
+ 'executed several of his courtiers',
  'a goatherd called Peter',
  'a green serpent that breathes flames',
  'a tiny room filled with more gold and silver than he could possibly carry',
