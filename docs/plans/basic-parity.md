@@ -38,8 +38,22 @@ opening scene. The light flag and object slot numbers retain their disk
 representation. An old save’s candle and bomb slots now refer to the crystal
 and flask. A spent flask stays spent and an opened oak door stays open.
 
-Then review the rest of the room prose, the HELP text, monster reactions and
-treasure banking together with prompt and combat behaviour. Keep the existing
+## Further differences to check against BASIC
+
+| Area | Assembly still does | BASIC reference does |
+| --- | --- | --- |
+| Rope and temple | Drops the rope on the balcony on a one-way descent. The wizard cavern connects directly back to the temple. | Ties the rope explicitly and lets the player climb back. The temple and wizard cavern use their separate routes. |
+| Crypt, grille and hatch | Opens the cell's north exit after a waterfall visit. Taking the grille opens the eastern shaft and carrying it does not block passage. | The drain junction's hatch opens directly and stays open. The grille must be left behind before using the shaft. Both sides of the crypt seal are traversable. |
+| Temple gate | The key moves you into the crypt. The north exit is otherwise blocked. | The key also leaves the gate open so going north later works. |
+| Bat and wizard | Relocates the transport bat and makes the wizard take the sword on defeat. | Removes the transport bat after the ride and leaves the sword with the player. |
+| Combat and inventory | Uses its established attack, turn and carry rules, including a ten-object limit. | Has an eleven-object limit, different retaliation timing and a free weapon clarification. |
+| Homecoming | Requires individual treasure drops. Carried treasures are worth their carried value even in the hut. | Banks carried treasures when you unlock the hut, retains equipment and shows the ranking and completion scene. |
+| Instructions | Pages the story and rules at launch and on HELP. | Points to a separate manual and has a short HELP response. |
+
+Keep the assembly disk recovery semantics while updating state that these
+rules require. Compare fields and puzzle outcomes, as well as room IDs and
+prose, during the full route. Use the same arrival paths in both builds when
+checking room descriptions. Keep the existing
 disk recovery tests and add coverage for any state fields the port adds.
 Validate each batch on its own. The crystal batch passes the assembly suite
 and a 146-command normal-start route in the TEC-OS emulator. Both executables
