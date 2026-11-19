@@ -4,7 +4,7 @@ import {readFile} from 'node:fs/promises';
 import {createZ80Runtime} from '@jhlagado/debug80-runtime/z80/runtime';
 
 export async function createMachine({files:initialFiles={},diskFault,readOnlyFiles=[],readOnlyDrive=false,autoPage=true}={}){
- const binary=await readFile(new URL('../../build/CAVERNS.COM',import.meta.url));
+ const binary=await readFile(new URL('../../build/CAVERN80.COM',import.meta.url));
  const symbols=JSON.parse(await readFile(new URL('../../build/symbols.json',import.meta.url),'utf8'));
  const initial=new Uint8Array(65536); initial.set(binary,256);
  const runtime=createZ80Runtime({memory:initial,startAddress:256},0);

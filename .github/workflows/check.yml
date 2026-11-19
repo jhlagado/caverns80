@@ -20,7 +20,7 @@ jobs:
         with:
           name: caverns-cpm
           path: |
-            build/CAVERNS.COM
+            build/CAVERN80.COM
             build/manifest.json
-            build/CAVERNS.d8.json
+            build/CAVERN80.d8.json
             build/symbols.json

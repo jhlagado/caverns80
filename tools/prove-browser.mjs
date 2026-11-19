@@ -14,7 +14,7 @@ const {chromium}=createRequire(pathToFileURL(join(consumer,'package.json')))('@p
 const {readCpm22File,CPM22_LOGICAL_BYTES,CPM22_BACKING_BYTES}=await import(pathToFileURL(join(consumer,'tools/lib/cpm22-disk.mjs')));
 const manifest=JSON.parse(await readFile(new URL('../build/manifest.json',import.meta.url)));
 const sha=b=>createHash('sha256').update(b).digest('hex');
-assert.equal(sha(await readFile(new URL('../build/CAVERNS.COM',import.meta.url))),manifest.sha256);
+assert.equal(sha(await readFile(new URL('../build/CAVERN80.COM',import.meta.url))),manifest.sha256);
 const url=process.env.CAVERNS_URL??'https://jhlagado.github.io/triptych/';
 const out=resolve(process.env.CAVERNS_REPORT_DIR??new URL('../build/browser-proof',import.meta.url).pathname);
 await mkdir(out,{recursive:true});

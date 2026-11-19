@@ -55,7 +55,9 @@ bringing treasure back to the hut to raise your score.
 ## Build and test
 
 Run `npm ci`, then `npm run check`. The build uses pinned native ATOM and creates
-`build/CAVERNS.COM`, a manifest and development debug information. No source
+`build/CAVERN80.COM`, a manifest and development debug information. On a
+CP/M disk, type `CAVERN80` to launch it. The distinct filename lets it share a
+disk with the TEC-OS BASIC build, `CAVERNS.COM`. No source
 translation or legacy assembler is required. All ASM filenames fit CP/M 8.3;
 each module has at most 500 lines.
 

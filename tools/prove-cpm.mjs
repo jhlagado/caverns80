@@ -13,8 +13,8 @@ const {installCpm22File}=await import(pathToFileURL(root+'/tools/lib/cpm22-disk.
 const hostRevision=execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim();
 const hostDirty=execFileSync('git',['status','--porcelain'],{cwd:root,encoding:'utf8'}).length!==0;
 const built=await buildCpmDistribution(root,{allowDirty:true});
-const game=await readFile(new URL('../build/CAVERNS.COM',import.meta.url));
-const disk=installCpm22File(built.disk,{name:'CAVERNS.COM',bytes:game,padByte:26});
+const game=await readFile(new URL('../build/CAVERN80.COM',import.meta.url));
+const disk=installCpm22File(built.disk,{name:'CAVERN80.COM',bytes:game,padByte:26});
 const hostArtifacts={};
 for(const name of ['triptych_host_wasm.js','triptych_host_wasm_bg.wasm'])hostArtifacts[name]=createHash('sha256').update(await readFile(root+'/dist/wasm/'+name)).digest('hex');
 const {TriptychCpu}=createRequire(import.meta.url)(root+'/dist/wasm/triptych_host_wasm.js');
@@ -25,7 +25,7 @@ function command(text,suffix='? '){output='';cpu.enqueue_serial_input(Buffer.fro
 const reference=await createMachine();
 const proof=proveFullRoute(reference);
 try {
- until('A>');command('CAVERNS');
+ until('A>');command('CAVERN80');
  for(const point of proof.checkpoints){
   command(point.command);
   assert.equal(cpu.read_ram(reference.symbols.playerLocation,1)[0],point.room,point.command+' room');

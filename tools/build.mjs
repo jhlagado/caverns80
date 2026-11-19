@@ -27,15 +27,15 @@ assert.equal(memory.stackEndExclusive,memory.endExclusive,'stack is the last all
 assert(memory.stackStart>=memory.start&&memory.endExclusive<=0xde00,'allocation fits the smallest supported Triptych resident ceiling');
 const out=new URL('../build/',import.meta.url);
 await mkdir(out,{recursive:true});
-await writeFile(new URL('CAVERNS.COM',out),bytes);
+await writeFile(new URL('CAVERN80.COM',out),bytes);
 await writeFile(new URL('symbols.json',out),JSON.stringify(symbols,null,2)+'\n');
-await writeFile(new URL('CAVERNS.d8.json',out),JSON.stringify(artifacts.d8,null,2)+'\n');
+await writeFile(new URL('CAVERN80.d8.json',out),JSON.stringify(artifacts.d8,null,2)+'\n');
 const sourceFiles={};
 for(const name of (await readdir(root,{withFileTypes:true})).filter(entry=>entry.isFile()).map(entry=>entry.name).sort()){
  const content=await readFile(new URL('../src/'+name,import.meta.url));
  sourceFiles['src/'+name]=createHash('sha256').update(content).digest('hex');
 }
 const sourceSha256=createHash('sha256').update(JSON.stringify(sourceFiles)).digest('hex');
-const manifest={format:'caverns-build-v1',artifact:'CAVERNS.COM',version:'0.1.1',loadAddress:256,entryAddress:256,bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex'),assembler:{name:'atom-z80',revision:'802b5c2d320bec777f427755ff2d7338e3b80a05'},sourceFormat:'native-atom',memory,sourceSha256,sourceFiles};
+const manifest={format:'caverns-build-v1',artifact:'CAVERN80.COM',version:'0.1.1',loadAddress:256,entryAddress:256,bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex'),assembler:{name:'atom-z80',revision:'802b5c2d320bec777f427755ff2d7338e3b80a05'},sourceFormat:'native-atom',memory,sourceSha256,sourceFiles};
 await writeFile(new URL('manifest.json',out),JSON.stringify(manifest,null,2)+'\n');
 console.log(JSON.stringify(manifest,null,2));
