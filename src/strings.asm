@@ -190,9 +190,9 @@ DESRIVCL:          DB "The forest has opened up at this point. You are standing 
                         DB "foot-beaten path leads south.",0
 DESRIVBA:           DB "You are standing at the rocky edge of the mighty river "
                         DB "Gioll. The path forks east and west.",0
-DESCRAED:          DB "You are on the edge of an enormous crater. The rim is "
-                        DB "extremely slippery. Clouds of water vapour rise high in the "
-                        DB "air as the Gioll pours into it.",0
+DESCRAED: DB "You stand on the slippery rim of an enormous crater. Clouds of water "
+        DB "vapour rise high into the air as the Gioll pours into it. West is a "
+        DB "fatal drop. A safe path leads east.",0
 DESRIVOU:        DB "The path to the east stops here. You are on a rocky "
                         DB "outcrop, projected about 15 feet above the river. In the "
                         DB "distance, a tiny bridge spans the river.",0
@@ -202,9 +202,8 @@ DESMTYMI:              DB "You are on the lower slopes of Mt. Ymir. The forest "
 DESBRINO:         DB "You stand on a rocky precipice high above the river, Gioll; "
                         DB "Mt. Ymir stands to the north. A flimsy string bridge spans "
                         DB "the mighty river.",0
-DESBRIMI:           DB "You have made your way half way across the creaking bridge. "
-                        DB "It sways violently from side to side. It's going to "
-                        DB "collapse any second!!",0
+DESBRIMI: DB "You are halfway across a creaking bridge. It sways violently above the "
+        DB "river! Hold tight and follow it either north or south.",0
 DESBRISO:         DB "You are on the southern edge of the mighty river, before "
                         DB "the string bridge. Paths lead west, and a cliff face lies east.",0
 DESMUSRO:        DB "You are standing on a rock in the middle of a mighty oak "
@@ -250,11 +249,10 @@ DESTEMBA:       DB "You are on a balcony, overlooking a huge cavern which has "
 DESTEMB1:      DB "fire, who came to live in Svartalfheim after he had been "
                         DB "banished to exile by Odin. Since then he has been waiting "
                         DB "for the `End Of All Things'.",0
-DESBATCA:             DB "You are in the central cave of a giant bat colony. Above "
-                        DB "you hundreds of giant bats hang from the ceiling and the "
-                        DB "floor is covered in centuries of",0
-DESBATC1:            DB "giant bat droppings. Careful where you step! Incidentally, "
-                        DB "the smell is indescribable.",0
+DESBATCA: DB "You are in the heart of a giant bat colony. Hundreds of bats hang from "
+        DB "the ceiling. Centuries of droppings cover the floor. Careful where you "
+        DB "step! Incidentally, the smell is indescribable. A junction lies north "
+        DB "and a passage leads west to another chamber.",0
 DESTEM:              DB "You are in the temple. To the north is a locked gate and on "
                         DB "the wall is a giant statue of Loki, carved out of the "
                         DB "living rock itself!",0
@@ -263,18 +261,20 @@ DESCRY2: DB "The air is heavy with the dust of centuries.",0
 DESTINCE:            DB "You are in a tiny cell. The western wall has now firmly "
                         DB "closed again. There is a ventilator shaft on the eastern "
                         DB "wall.",0
-DESWATLE:      DB "You are on another ledge high above a subterranean river. "
-                        DB "The water flows in through a hole in the cavern roof, to "
-                        DB "the north.",0
+DESWATLE: DB "You stand on a ledge high above a subterranean river. Water pours "
+        DB "through a hole in the roof to the north. A path leads north to the "
+        DB "waterfall and south to a river bend. A cavern lies west. East is a "
+        DB "sheer drop.",0
 STRDRASY:       DB "Somehow you have gotten into the complex drainage system of"
                         DB "this entire cavern network!!",0
-DESWATBA:       DB "You are standing near an enormous waterfall which brings "
-                        DB "water down from the surface, from the river Gioll.",0
+DESWATBA: DB "You stand beside an enormous waterfall fed by the river Gioll on the "
+        DB "surface. Stone steps climb north beside the falling water. A ledge "
+        DB "lies south. There is no safe footing to the east.",0
 DESSTOST:          DB "You are standing before a stone staircase which leads "
                         DB "southwards.",0
-DESCASLE:         DB "You are on a narrow and crumbling ledge. On the other side "
-                        DB "of the river you can see a magic castle. (Don't ask me why "
-                        DB "it's magic...I just know it is)",0
+DESCASLE: DB "You stand on a narrow crumbling ledge at a bend in the river. Across "
+        DB "the water to the east is a magic castle. Don't ask me why it is "
+        DB "magic... I just know it is! A path leads north to another ledge.",0
 DESDRA:          DB "You are by the drawbridge which has just lowered "
                         DB "itself....by magic!!",0
 DESCASCO:     DB "You are in the courtyard of the magic castle. WOW! This "
@@ -417,3 +417,15 @@ DECDIV: DW 10000,1000,100,10,1
 
 WINMSG: DB "The lost hoard of Svartalfheim is safe in your hut. Your quest is complete!",0
 LONGMSG: DB 13,10,"That command is too long; please use at most 31 characters.",0
+DESBATJN: DB "You are in a dark cavern where passages meet. A draught stirs the air. "
+        DB "A round chamber lies east and a bat colony lies south. A forked stone "
+        DB "pillar marks a passage west.",0
+DESFORK: DB "You are beside a forked stone pillar in a dark cavern. A junction lies "
+        DB "east and a passage leads west to a pale limestone chamber.",0
+DESLOWPA: DB "Water drips from the roof of this low passage. It leads north to a "
+        DB "pale limestone chamber and east to another chamber.",0
+DESPALE: DB "The pale limestone walls of a dark cavern catch the light. A passage "
+        DB "leads east to a forked stone pillar and a low dripping passage turns "
+        DB "south.",0
+DESKEYCH: DB "You are deep in a dark cavern. Passages lead east towards roosting "
+        DB "bats and west into a low dripping passage.",0

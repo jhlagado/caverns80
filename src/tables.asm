@@ -13,7 +13,7 @@ MOVTAB:
                         DB 0,0,ROORIVBA,0
                         DB 0,ROOBRINO,ROOCLOFI,0
                         DB ROOMTYMI,ROOBRIMI,0,0
-                        DB ROOBRINO,ROOBRISO,128,128
+                        DB ROOBRINO,ROOBRISO,0,0
                         DB ROOBRIMI,0,ROOMUSRO,ROOCLIFA
                         DB 0,ROOCAVEN,0,ROOBRISO
                         DB ROOMUSRO,ROOCAVE1,0,0
@@ -31,26 +31,26 @@ MOVTAB:
                         DB ROONORSO,ROOLEDOV,ROODARC3,ROODARC2
                         DB ROOROURO,0,0,ROOTEMBA
                         DB 0,0,ROOLEDOV,0
-                        DB ROODARC4,ROOBATCA,0,ROOROURO
-                        DB 0,ROODARC3,0,ROODARC6
-                        DB ROOBATCA,0,ROODARC6,0
-                        DB 0,0,ROODARC4,ROODARC5
-                        DB ROODARC3,ROODARC5,ROODARC7,0
-                        DB 0,0,0,ROOBATCA
+                        DB 0,ROOBATCA,ROODARC4,ROOROURO
+                        DB 0,0,ROODARC6,ROODARC3
+                        DB ROODARC6,0,0,ROODARC7
+                        DB 0,ROODARC5,0,ROODARC4
+                        DB ROODARC3,0,ROODARC7,0
+                        DB 0,0,ROODARC5,ROOBATCA
                         DB 0,0,0,ROODARC8
                         DB ROODARC9,0,ROOTEM,ROOLEDWA
                         DB 0,ROOTEM,0,0
                         DB 0,0,0,0
                         DB 0,ROODARC8,ROOTINCE,0
-                        DB ROOWATBA,ROOCASLE,ROODARC8,128
+                        DB ROOWATBA,ROOCASLE,ROODARC8,0
                         DB 0,0,ROORIVCO,ROODRAB
                         DB 0,0,ROODRAA,ROODRAC
                         DB ROODAR10,ROOTINCE,ROODRAB,ROODRAD
                         DB 0,0,ROODRAC,0
-                        DB ROOSTOST,ROOLEDWA,0,128
+                        DB ROOSTOST,ROOLEDWA,0,0
                         DB 0,ROODRAC,ROOSTOST,0
                         DB 0,ROOWATBA,0,ROODAR10
-                        DB ROOLEDWA,128,0,128
+                        DB ROOLEDWA,0,0,0
                         DB 0,0,ROOCASLE,ROOCASCO
                         DB 0,ROOEASRI,ROODRA,ROOPOWMA
                         DB 0,0,ROOCASCO,0
@@ -82,7 +82,7 @@ ROODES1T:
                         DW DESTRERO, DESOAKDO, NULL, DESWINCO
                         DW DESTORCH, DESNSTUN, NULL, DESROURO
                         DW DESLEDRI, DESTEMBA
-                        DW NULL, NULL, NULL, NULL, DESBATCA, NULL, DESTEM
+                        DW DESBATJN, DESFORK, DESLOWPA, DESPALE, DESBATCA, DESKEYCH, DESTEM
                         DW NULL, DESCRY, DESTINCE, NULL, DESWATLE
                         DW NULL, NULL, NULL, NULL, DESWATBA, NULL, DESSTOST
                         DW DESCASLE, DESDRA, DESCASCO
@@ -94,7 +94,7 @@ ROODES2T:
                         DW NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
                         DW NULL, NULL, NULL, NULL, DESTORC1, NULL, NULL
                         DW DESROUR1, NULL, DESTEMB1
-                        DW NULL, NULL, NULL, NULL, DESBATC1, NULL, NULL, NULL, DESCRY2
+                        DW NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, DESCRY2
                         DW NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
                         DW NULL, NULL, NULL, NULL, NULL, NULL, NULL
 
@@ -221,11 +221,11 @@ DARCAVRO:
                         DB ROODARCA
                         DB ROODARC1
                         DB ROODARC2
-                        DB ROODARC3
-                        DB ROODARC4
-                        DB ROODARC5
-                        DB ROODARC6
-                        DB ROODARC7
+
+
+
+
+
                         DB ROODARC8
                         DB ROODARC9
                         DB ROODAR10

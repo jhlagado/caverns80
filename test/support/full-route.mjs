@@ -29,7 +29,7 @@ export function proveFullRoute(game){
  defeat(4,'dragon');
  walk(['south','south','get candle','west','north','get diamond','west','south','south','west','south','west','get key'],34);
  assert.equal(obj(19),255);
- walk(['east','south','west','west','south','east','south','east','down with rope'],35);
+ walk(['west','north','east','east','east','south','east','down with rope'],35);
  assert.equal(obj(22),28,'rope left at balcony');
  walk(['open gate with key','read','vard','east','get grill','drop grill','east','south'],36);
  assert.equal(game.byte('gateDestination'),39);

@@ -15,6 +15,8 @@ test('all ordinary compass exits reverse, except six documented puzzle returns',
   ['49,2,48','drawbridge lowering opens east'],
  ]);
  const seen=[];
+ assert.deepEqual([...table].flatMap((dest,i)=>dest===128?[[Math.floor(i/4)+1,'NSWE'[i%4]]]:[]),[[7,'W']],
+  'only the warned crater drop is fatal');
  for(let room=1;room<=54;room++)for(let dir=0;dir<4;dir++){
   const dest=table[(room-1)*4+dir];
   assert(dest===0||dest===128||(dest>=1&&dest<=54),`invalid exit ${room}/${dir}`);

@@ -29,7 +29,7 @@ assert.equal(sha(disk),catalog.distribution.diskSha256);
 assert.deepEqual(Buffer.from(readCpm22File(disk,'CAVERNS.COM')),asset);
 await save('assets.json',{status:'passed',url,observedAt:new Date().toISOString(),version:manifest.version,distribution:catalog.distribution,game,diskSha256:sha(disk)});
 const route=proveFullRoute(await createMachine()).route;
-assert.equal(route.length,147,'review a changed route before changing this acceptance count');
+assert.equal(route.length,146,'review a changed route before changing this acceptance count');
 const browser=await chromium.launch();let pages=0;
 const text=p=>p.locator('#terminal').textContent();
 async function until(p,expected){
@@ -94,5 +94,5 @@ try{
   await command(u,'QUIT','Another adventure?');await command(u,'C');await command(u,'LOOK');
   await save('upgrade.json',{status:'passed',url,observedAt:new Date().toISOString(),comSha256:manifest.sha256,reopenedByteExact:true,oldDiskSha256:sha(old),updatedDiskSha256:sha(updated),preservedFiles:[...names].filter(n=>n!=='CAVERNS.COM'),systemTracksPreserved:true,oldSaveLoaded:true,cancellationResumed:true,dialogs});
  }
- console.log(JSON.stringify({status:'passed',url,version:manifest.version,reportDirectory:out,commands:147,score:126,upgradeChecked:Boolean(process.env.CAVERNS_OLD_DISK)}));
+ console.log(JSON.stringify({status:'passed',url,version:manifest.version,reportDirectory:out,commands:route.length,score:126,upgradeChecked:Boolean(process.env.CAVERNS_OLD_DISK)}));
 }finally{await browser.close();}

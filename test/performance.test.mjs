@@ -10,7 +10,7 @@ test('full-route, HELP and save/load guest-cycle costs stay within declared budg
  const command=g.command.bind(g);
  g.command=text=>{const start=g.metrics.cycles;const output=command(text);samples.push(g.metrics.cycles-start);return output;};
  proveFullRoute(g);
- assert.equal(samples.length,147);
+ assert.equal(samples.length,146);
  const sorted=[...samples].sort((a,b)=>a-b);
  assert(sorted[Math.ceil(sorted.length*.95)-1]<=500000,'route p95 exceeds 500,000 cycles');
  assert(sorted.at(-1)<=600000,'route maximum exceeds 600,000 cycles');
