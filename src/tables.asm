@@ -136,8 +136,8 @@ VERTOKTA:
                         DW TOKSOU
                         DW TOKWES
                         DW TOKEAS
-                        DW TOKHEL
-VERTOKCO          EQU 36
+                        DW TOKHEL, TOKUSE
+VERTOKCO          EQU 37
 
 ; Noun tokens scanned from input (indices 1..nounTokenCount).
 ; 1..24 align to index space (creatures 1..6, objects 7..24).

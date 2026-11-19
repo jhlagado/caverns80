@@ -85,16 +85,15 @@ work. Backspace edits the line, and an empty line returns to the prompt.
 | `HELP` | Repeat the story and rules. |
 
 For other tasks, name the action and the objects involved. Supported action
-words include `OPEN`, `UNLOCK`, `KILL`, `ATTACK`, `LIGHT`, `BURN` and `DOWN`.
+words include `OPEN`, `UNLOCK`, `KILL`, `ATTACK`, `USE` and `DOWN`.
 Some actions require both a target and a carried tool. The original
 instructions give `KILL DRAGON WITH SWORD` as an example of a clear command.
-Use explicit actions and tools in this version; the historical general-purpose
-`USE` shorthand is not part of the current command set.
+Follow the wording on clues you find when deciding how to use an object.
 
 Looking, checking inventory, reading, examining, displaying your score and
 requesting help cost no turns. Saving and loading are also free. Travel and
 physical actions take time, including unsuccessful attempts at recognised
-actions. Your candle burns down as time passes, and creatures may attack.
+actions. The crystal’s glow fades as time passes, and creatures may attack.
 Saving before a risky action gives you a point to return to.
 
 ## Saving and returning

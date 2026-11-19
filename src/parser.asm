@@ -278,5 +278,7 @@ DISSCACO:
         JP      Z,CMDEAST
         CP      36
         JP      Z,CMDHELP
+        CP      37
+        JP      Z,CMDUSE
         JP      ECHOLINE
 

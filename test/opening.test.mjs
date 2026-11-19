@@ -27,7 +27,7 @@ test('opening inventory and compass acquisition preserve location table',async()
  assert.equal(game.byte('playerLocation'),1);
 });
 
-test('ordinary-command opening route crosses bridge and reaches the cave candle',async()=>{
+test('ordinary-command opening route crosses bridge and reaches the glowing crystal',async()=>{
  const game=await createMachine();game.run();
  const commands=['get compass','north','west','west','south','west','get sword','east','north','east','east','east','east','south'];
  for(const command of commands)game.command(command);
@@ -39,7 +39,7 @@ test('ordinary-command opening route crosses bridge and reaches the cave candle'
  for(const command of ['south','south','east','get rope','west','west','south'])game.command(command);
  assert.equal(game.byte('playerLocation'),14);
  defeat(4,'dragon');
- for(const command of ['south','south','get candle'])game.command(command);
+ for(const command of ['south','south','get crystal'])game.command(command);
  assert.equal(game.byte('playerLocation'),18);
  for(const id of [8,20,21,22])assert.equal(game.memory[game.symbols.objectLocation+id-1],255);
 });

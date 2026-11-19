@@ -27,7 +27,7 @@ export function proveFullRoute(game){
  defeat(3,'troll');
  walk(['south','south','east','get rope','west','west','south'],14);
  defeat(4,'dragon');
- walk(['south','south','get candle','west','north','get diamond','west','south','south','west','south','west','get key'],34);
+ walk(['south','south','get crystal','west','north','get diamond','west','south','south','west','south','west','get key'],34);
  assert.equal(obj(19),255);
  walk(['west','north','east','east','east','south','east','down with rope'],35);
  assert.equal(obj(22),28,'rope left at balcony');
@@ -39,13 +39,13 @@ export function proveFullRoute(game){
  assert.equal(game.byte('waterExitLocation'),43);
  walk(['south','west','north','west','north','north','get pearl','west'],47);
  defeat(6,'goblin');
- walk(['south','south','west','north','west','north','west','west','west','get stone','south','east','north','read','east','get bomb','west','west','west'],48);
+ walk(['south','south','west','north','west','north','west','west','west','get stone','south','east','north','read','east','get flask','west','west','west'],48);
  assert.equal(game.byte('drawbridgeState'),49);
  walk(['galar','north','north','east','north','north','north','west','west','open door with key'],1);
  bank([[7,'coin'],[8,'compass'],[10,'ruby'],[11,'diamond'],[12,'pearl'],[13,'stone']]);
  walk(['north','east','east','south','south','south','west','south','south','south','west','north','west','north'],20);
- command('light bomb with candle');
- assert.equal(obj(9),0,'bomb consumed by door puzzle');
+ command('use crystal with flask');
+ assert.equal(obj(9),0,'flask consumed by door puzzle');
  assert.equal(game.byte('playerLocation'),20,'blast does not teleport player');
  walk(['east'],19);defeat(2,'demon');
  walk(['get ring','get pendant','get grail','get shield','galar','north','north','east','north','north','north','west','west','open door with key'],1);

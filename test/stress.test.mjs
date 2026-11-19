@@ -16,7 +16,7 @@ for(const seed of [1,0x1234,0xACE1,0xFFFF])test(`bounded command stress with see
  const g=await createMachine();g.run();const check=guard(g);
  g.memory[g.symbols.rngState]=seed&255;g.memory[g.symbols.rngState+1]=seed>>>8;
  let random=seed;
- const commands=['north','south','east','west','galar','look','help','list','read','vard','get compass','get candle','get sword','get grill','get door','drop gate','light bomb with candle','open gate with key','down with rope','kill dragon with sword','kill troll with sword','score','nonsense','quit'];
+ const commands=['north','south','east','west','galar','look','help','list','read','vard','get compass','get crystal','get sword','get grill','get door','drop gate','use crystal with flask','open gate with key','down with rope','kill dragon with sword','kill troll with sword','score','nonsense','quit'];
  for(let i=0;i<180;i++){
   random=(Math.imul(random,1664525)+1013904223)>>>0;
   const command=commands[random%commands.length];

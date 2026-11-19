@@ -35,7 +35,8 @@ EXAM07: DB "The coin bears an old design, worn smooth at its "
         DB "edges.",0
 EXAM08: DB "The compass needle keeps its bearing. Carry it to read "
         DB "directions.",0
-EXAM09: DB "A short fuse projects from the bomb. It needs a flame.",0
+EXAM09: DB "The flask holds enchanted powder.",13,10
+        DB "Its seal reads: 'Use with the crystal. Stand well back.'",0
 EXAM10: DB "The ruby catches the light like a drop of blood.",0
 EXAM11: DB "The diamond has been cut with extraordinary skill.",0
 EXAM12: DB "The pearl has the soft lustre of moonlight.",0
@@ -49,8 +50,7 @@ EXAM18: DB "The black box has no obvious markings.",0
 EXAM19: DB "The key is rusty, but its teeth are intact.",0
 EXAM20: DB "The sword has two keen edges. You must carry it to "
         DB "fight with it.",0
-EXAM21: DB "The candle will not last forever. Keep an eye on its "
-        DB "light.",0
+EXAM21: DB "The crystal lights the caves. Its glow fades with time.",0
 EXAM22: DB "The rope is thin and worn, but might serve for a "
         DB "descent.",0
 EXAM23: DB "It is an ordinary red house brick, solid and heavy.",0

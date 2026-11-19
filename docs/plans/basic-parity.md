@@ -31,13 +31,19 @@ The next map pass needs to handle these routes and their prose together:
   restriction and make the service hatch open from the drain junction.
 - Lower river and castle. Keep the drawbridge's valid return and the walking
   route back from the castle. Visiting the waterfall must not move a latch.
-- Gate and oak door. Describe each state accurately, including a passage
-  opened by the crystal and flask. Add the new activation and consumption
-  rules along with its narrated result.
+- Temple gate. Describe both states accurately.
+
+The oak-door batch ports the crystal, the castle flask, its seal and the
+opening scene. The light flag and object slot numbers retain their disk
+representation. An old save’s candle and bomb slots now refer to the crystal
+and flask. A spent flask stays spent and an opened oak door stays open.
 
 Then review the rest of the room prose, the HELP text, monster reactions and
 treasure banking together with prompt and combat behaviour. Keep the existing
 disk recovery tests and add coverage for any state fields the port adds.
-Qualify the exact assembly build on TEC-OS with a normal start, all 54 rooms,
-126 points and SAVE/LOAD across process exit. Keep the historical release
+Validate each batch on its own. The crystal batch passes the assembly suite
+and a 146-command normal-start route in the TEC-OS emulator. Both executables
+were on the test card. SAVE CAMP and LOAD CAMP preserved the 126-point result
+across a reboot. Requalify the final port with all 54 rooms and the changed
+puzzle state before replacing downstream builds. Keep historical release
 records distinct from the port's evidence.

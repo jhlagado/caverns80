@@ -139,97 +139,58 @@ CMDNEEHO:
         LD      (VERPATIN),A
         RET
 
-; ---------------------------------------------------------
-; cmdLight
-; Behavior: "light" is recognized but requires clarification.
-; (In the original BASIC this prints "Please tell me how." and does not relight.)
-; ---------------------------------------------------------
+ ; The parser returns up to two nouns; flask and crystal may be in either
+ ; order. Keep the legacy slot numbers for existing disk records.
 CMDLIGHT:
-        JP      CMDLIGBU
-
-; ---------------------------------------------------------
-; cmdBurn
-; Special-case: burning the bomb requires candle as the second noun.
-; Otherwise behaves like "Please tell me how."
-; ---------------------------------------------------------
 CMDBURN:
-        ; fallthrough
-
-; ---------------------------------------------------------
-; cmdLightBurnBombCommon
-; Handles "light/burn bomb candle" gating.
-;
-; Rule (as requested):
-; - Require bomb noun + candle noun (orderless).
-; - If requirement not met: "Please tell me how."
-; - If bomb not mentioned: "Please tell me how."
-;
-; Note: The actual bomb explosion logic is implemented separately.
-; ---------------------------------------------------------
+CMDUSE:
 CMDLIGBU:
-        ; Require bomb noun to be present.
         LD      A,(CUROBJIN)
         CP      OBJBOMB
         JR      Z,CLBHAVBO
         LD      A,(TARLOC)
         CP      OBJBOMB
-        JR      Z,CLBHAVBO
-        JP      CMDNEEHO
-
+        JP      NZ,CMDNEEHO
 CLBHAVBO:
-        ; Require candle noun (explicit, orderless).
         LD      A,(CUROBJIN)
         CP      OBJCAN
         JR      Z,CLBHAVCA
         LD      A,(TARLOC)
         CP      OBJCAN
         JR      Z,CLBHAVCA
-        JP      CMDNEEHO
-
+        ; A bare USE FLASK reads the seal if the flask is here.
+        CALL    FLASKLOC
+        JP      NZ,CMDGETCA
+        LD      HL,EXAM09
+        JP      PRILIN
 CLBHAVCA:
-        ; Require candle to be carried (tool).
         LD      A,(OBJLOC+OBJCAN-1)
         CP      ROOCAR
         JR      Z,CLBCANOK
-        LD      HL,STRNOTCA
-        CALL    PRILIN
-        CALL    PRINEWLI
-        RET
-
+        LD      HL,STRNEEDC
+        JP      PRILIN
 CLBCANOK:
-        ; Candle must be lit.
-        LD      A,(CANISLIT)
-        OR      A
-        JR      NZ,CLBCANLI
-        LD      HL,STRCANO1
-        CALL    PRILIN
-        CALL    PRINEWLI
-        RET
+        ; A dark crystal can still wake the enchantment.
+        CALL    FLASKLOC
+        JP      NZ,CMDGETCA
+        JR      CLBBOMOK
 
-CLBCANLI:
-        ; Require bomb to be carried or present.
+FLASKLOC:
         LD      A,(PLALOC)
         LD      C,A
         LD      A,(OBJLOC+OBJBOMB-1)
         CP      ROOCAR
-        JR      Z,CLBBOMOK
+        RET     Z
         CP      C
-        JR      Z,CLBBOMOK
-        LD      HL,STRCANSE
-        CALL    PRILIN
-        CALL    PRINEWLI
         RET
 
 CLBBOMOK:
-        ; The oak door is the only useful and safe place to set this charge.
-        ; Validate before consuming the bomb or changing any world state.
+        ; The flask is spent only at the oak door.
         LD      A,(PLALOC)
         CP      ROOOAKDO
         JR      Z,CLBAFTKN
-        LD      HL,STRTOODA
-        CALL    PRILIN
-        CALL    PRINEWLI
-        RET
+        LD      HL,STRSEALG
+        JP      PRILIN
 
 CLBAFTKN:
         LD      HL,STRBOMEX

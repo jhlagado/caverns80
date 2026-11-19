@@ -26,6 +26,21 @@ WATSEEN:
         LD      HL,ROODES2T
         CALL    PRIDES
 
+        ; The oak doorway description follows its saved state.
+        LD      A,D
+        CP      ROOOAKDO
+        JR      NZ,PCAFTDOR
+        LD      A,(TELDES)
+        OR      A
+        LD      HL,STROAKLK
+        JR      Z,PCDOOR
+        LD      HL,STROAKOP
+PCDOOR:
+        CALL    PRILIN
+        LD      A,(PLALOC)
+        LD      D,A
+PCAFTDOR:
+
         ; Dragon corpse only when dragon is dead in cave entrance clearing.
         LD      A,D
         CP      ROOCAVEN
@@ -59,7 +74,7 @@ PCAFTDR1:
 PC_LISTS:
         LD      A,D
         CALL    UPDDRAST
-        ; Candle is advanced by the action loop, never rendering.
+        ; Crystal glow is advanced by the action loop, never rendering.
         CALL    LISROOOB
         CALL    LISROOCR
         CALL    PRINEWLI           ; blank line after the whole response
@@ -73,11 +88,11 @@ PCTOODAR:
 
 ; ---------------------------------------------------------
 ; updateCandleByTurns
-; candle timing using turnCounter.
+; crystal timing using turnCounter.
 ;
 ; Behavior:
-; - At turn 201 (U > 200): prints "Your candle is growing dim."
-; - At turn 230 (U >= 230): sets candleIsLitFlag = 0 and prints "In fact...it went out!"
+; - At turn 201 (U > 200): prints "The crystal's glow is fading."
+; - At turn 230 (U >= 230): sets candleIsLitFlag = 0 and prints "The crystal has gone dark."
 ;
 ; Notes:
 ; - Only runs when the room is visible (not "too dark").
@@ -136,7 +151,7 @@ UPDDRAST:
 ;
 ; Rules:
 ;   Rooms < roomDarkCavernA are always visible.
-;   Rooms >= roomDarkCavernA require a lit candle that is carried or present.
+;   Rooms >= roomDarkCavernA require a glowing crystal that is carried or present.
 ;
 ; Clobbers:
 ;   AF, BC, HL
@@ -153,7 +168,7 @@ IRDCHECA:
         OR      A
         RET     Z                      ; unlit => too dark (Z=1)
 
-        ; Candle must be carried or in this room.
+        ; Crystal must be carried or in this room.
         LD      HL,OBJLOC+OBJCAN-1
         LD      A,(HL)
         CP      ROOCAR
@@ -435,6 +450,15 @@ LO_NEXT:
 ;   AF, BC, DE, HL
 ; ---------------------------------------------------------
 PRIOBJAD:
+        CP      OBJCAN
+        JR      NZ,PRIOBJTB
+        LD      A,(CANISLIT)
+        OR      A
+        LD      A,OBJCAN
+        JR      NZ,PRIOBJTB
+        LD      HL,STRCRDRK
+        JP      TERPUT1
+PRIOBJTB:
         SUB     FIROBJIN
         LD      B,A                    ; save 0-based index (SYS_PUTS clobbers C)
         LD      C,A                    ; 0-based index into object tables
@@ -445,12 +469,7 @@ PRIOBJAD:
 
 ; A = object index (7..24)
 PRIOBJA1:
-        SUB     FIROBJIN
-        LD      B,A
-        LD      HL,OBJNAMNA
-        LD      A,B
-        CALL    PRIWORTA
-        RET
+        JP      PRIOBJAD
 
 ; ---------------------------------------------------------
 ; printWordTableEntry0Based

@@ -8,7 +8,7 @@ test('all ordinary compass exits reverse, except six documented puzzle returns',
  const opposite=[1,0,3,2];
  const exceptions=new Map([
   ['1,0,2','hut door needs key'],
-  ['19,2,20','oak door needs bomb'],
+  ['19,2,20','oak door needs crystal and flask'],
   ['37,1,35','temple gate needs key'],
   ['39,2,38','cell grille opens east'],
   ['43,1,38','waterfall discovery opens north'],

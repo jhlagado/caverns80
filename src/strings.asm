@@ -16,8 +16,8 @@ STRBRISN:       DB "Two of the ropes have snapped under your weight. It's "
                         DB "totally unfit to cross again.",0
 STRDRACO:        DB "You can also see the bloody corpse of an enormous dragon.",0
 STRGOLBR:          DB " A mighty golden drawbridge spans the waters.",0
-STRCANDI:           DB "Your candle is growing dim.",0
-STRCANOU:           DB "In fact...it went out!",0
+STRCANDI:           DB "The crystal's glow is fading.",0
+STRCANOU:           DB "The crystal has gone dark.",0
 STRSEEOB:          DB "You can also see...",0
 STRSEECR:        DB "Nearby there lurks...",0
 STRPRO:              DB ">",0
@@ -58,7 +58,12 @@ STRCORVA:         DB "Suddenly a black cloud descends and the corpse vaporizes "
                         DB "into nothing.",0
 STRWONBU:            DB "That won't burn, Dummy...In fact, the candle went out.",0
 STRCANO1:     DB "But the candle is out, stupid!!",0
-STRBOMEX: DB "You shelter around the corner as the fuse burns. BOOM! The oak door splinters, revealing the treasure vault.",0
+STRBOMEX: DB "A thread of blue light leaps from the crystal. The flask cracks.",13,10
+        DB "Pale fire races along the iron bands. The oak groans and bursts inwards.",13,10
+        DB "Beyond the smoke a passage leads east.",0
+STRSEALG: DB "The seal glints briefly. Nothing else happens.",0
+STRNEEDC: DB "You need to carry the crystal.",0
+STRCRDRK: DB "a dark crystal",0
 STRTOODA:        DB "It's too dangerous!!!",0
 STRDESRO:         DB "You descend the rope, but it drops 10 feet short of the "
                         DB "floor. You jump the rest of the way.",0
@@ -136,10 +141,10 @@ STRHELTE:
         DB "SCORE shows your current score. HELP repeats this story and these "
         DB "rules.",13,10,13,10
         DB "GET or TAKE picks up an object. DROP puts it down. Name the action and "
-        DB "tool for other tasks: OPEN, UNLOCK, KILL, ATTACK, LIGHT, BURN or DOWN. "
+        DB "tool for other tasks: OPEN, UNLOCK, KILL, ATTACK, USE or DOWN. "
         DB "Some actions require both a target and a tool.",13,10,13,10
         DB "Looking, checking inventory, reading, examining, scoring and HELP cost "
-        DB "no turns. Travel and physical actions take time; a candle burns down "
+        DB "no turns. Travel and physical actions take time; the crystal fades "
         DB "and creatures may attack. Plan a retreat and save before taking a "
         DB "risk.",13,10,13,10
         DB "SAVE stores your game as CAVERNS.SAV on the current disk. LOAD "
@@ -222,8 +227,10 @@ DESDEAEN:             DB "This passage appears to be a dead end. On a wall befor
 DESTRERO:        DB "You are in the legendary treasure room of the black elves "
                         DB "of Svartalfheim. Every red-blooded Viking has dreamed of "
                         DB "entering this sacred room.",0
-DESOAKDO:             DB "You can see a small oak door to the east. It has been "
-                        DB "locked from the inside.",0
+DESOAKDO: DB "You stand before a doorway. A passage leads south to a cavern.",0
+STROAKLK: DB "A formidable oak door bound with iron is locked from the inside.",13,10
+        DB "I wonder if even an explosive would open it.",0
+STROAKOP: DB "An open doorway leads east into the treasure room.",0
 DESWINCO:        DB "The corridor turns south and west. You can feel a "
                         DB "faint breeze coming from the south.",0
 DESTORCH:      DB "You are standing in what appears to have once been a "
@@ -280,7 +287,7 @@ DESDRA:          DB "You are by the drawbridge which has just lowered "
 DESCASCO:     DB "You are in the courtyard of the magic castle. WOW! This "
                         DB "castle is really something! On the wall is inscribed 'hzb "
                         DB "tzozi'. A secret escape tunnel leads south",0
-DESPOWMA:           DB "You are in the powder magazine of this really super "
+DESPOWMA:           DB "You are in the store-room of this really super "
                         DB "castle.",0
 DESEASBA:            DB "You are on the eastern side of the river. A small tunnel "
                         DB "leads north into the cliff face.",0
@@ -292,6 +299,7 @@ DESRIVCO:        DB "You are in a conduit draining into the river. The water "
 
 TOKLOO:               DB " look ",0
 TOKLIS:               DB " list ",0
+TOKUSE: DB " use ",0
 TOKHEL:               DB " help ",0
 TOKQUI:               DB " quit ",0
 TOKGAL:              DB " galar ",0
@@ -344,7 +352,7 @@ TOKGOB:             DB " goblin ",0
 
 TOKCOI:               DB " coin ",0
 TOKCOM:            DB " compass ",0
-TOKBOM:               DB " bomb ",0
+TOKBOM:               DB " flask ",0
 TOKRUB:               DB " ruby ",0
 TOKDIA:            DB " diamond ",0
 TOKPEA:              DB " pearl ",0
@@ -356,7 +364,7 @@ TOKSHI:             DB " shield ",0
 TOKENBOX:                DB " box ",0
 TOKENKEY:                DB " key ",0
 TOKSWO:              DB " sword ",0
-TOKCAN:             DB " candle ",0
+TOKCAN:             DB " crystal ",0
 TOKROP:               DB " rope ",0
 TOKBRI:              DB " brick ",0
 TOKGRI:              DB " grill ",0
@@ -378,8 +386,8 @@ OBJNAMCO:             DB "a gold "
 OBJNOUCO:             DB "coin",0
 OBJNAMC1:          DB "a useful looking "
 OBJNOUC1:          DB "compass",0
-OBJNAMBO:             DB "a home made "
-OBJNOUBO:             DB "bomb",0
+OBJNAMBO:             DB "a sealed "
+OBJNOUBO:             DB "flask",0
 OBJNAMRU:             DB "a blood red "
 OBJNOURU:             DB "ruby",0
 OBJNAMDI:          DB "a sparkling "
@@ -402,8 +410,8 @@ OBJNAMKE:              DB "an old and rusty "
 OBJNOUKE:              DB "key",0
 OBJNAMSW:            DB "a double-bladed "
 OBJNOUSW:            DB "sword",0
-OBJNAMCA:           DB "a small "
-OBJNOUCA:           DB "candle",0
+OBJNAMCA:           DB "a small glowing "
+OBJNOUCA:           DB "crystal",0
 OBJNAMRO:             DB "a thin and tatty "
 OBJNOURO:             DB "rope",0
 OBJNAMBR:            DB "a red house "

@@ -42,11 +42,11 @@ test('oak-door and demon puzzles can precede the first treasure banking trip',as
  const g=await createMachine();g.run();let early=false,banked=false;
  const obj=id=>g.memory[g.symbols.objectLocation+id-1];
  for(const text of baseline.route){
-  if(text==='light bomb with candle'||text==='kill demon with sword')continue;
+  if(text==='use crystal with flask'||text==='kill demon with sword')continue;
   safe(g,text);
   if(text==='galar'&&!early){
    assert.equal(banked,false);assert.equal(obj(9),255);
-   for(const command of ['south','west','north','west','north','light bomb with candle','east'])safe(g,command);
+   for(const command of ['south','west','north','west','north','use crystal with flask','east'])safe(g,command);
    assert.equal(g.byte('playerLocation'),19);assert.equal(obj(9),0);
    for(let tries=0;tries<12&&obj(2)!==0;tries++)safe(g,'kill demon with sword');
    assert.equal(obj(2),0,'demon defeated before banking');

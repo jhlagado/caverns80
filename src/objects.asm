@@ -89,8 +89,13 @@ GETNOGR:
         CALL TERPUT1
         CALL    PRINEWLI
         POP     BC
-        CALL    PRICURRO
-        RET
+        LD      A,B
+        CP      OBJBOMB
+        JR      NZ,GETSHOW
+        LD      HL,EXAM09
+        CALL    PRILIN
+GETSHOW:
+        JP      PRICURRO
 
 CMDGETTO:
         LD      HL,STRTOOMA
